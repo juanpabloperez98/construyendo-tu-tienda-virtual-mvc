@@ -1,0 +1,19 @@
+@import '../../../../styles.css';
+
+
+.content {
+  padding: 130px 0px 130px 0px;
+}
+
+.content span {
+  font-weight: bold;
+}
+
+.content .content-img {
+  text-align: center;
+}
+
+.content .content-img img {
+  width: 300px;
+  margin-top: 50px;
+}

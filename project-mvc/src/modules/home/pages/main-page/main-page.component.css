@@ -1,0 +1,72 @@
+@import '../../../../styles.css';
+
+.banner {
+  padding-top: 150px;
+  background-image: url('../../../../assets/home/banner.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px;
+  text-align: center;
+  display: flex;
+  position: relative;
+  z-index: 0;
+  color: white;
+}
+
+.banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+
+.banner h1 {
+  margin: auto;
+  width: 70%;
+}
+
+.content {
+  margin: 40px auto;
+}
+
+.content span {
+  font-weight: bold;
+}
+
+.content .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.card img {
+  height: 300px;
+}
+
+.content .card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.content .card .card-body .card-text {
+  flex-grow: 1;
+}
+
+.content .card .card-body .btn {
+  align-self: flex-start;
+  margin-top: 10px;
+}
+

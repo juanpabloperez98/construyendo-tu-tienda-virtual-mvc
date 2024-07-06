@@ -1,0 +1,109 @@
+:root {
+  --primary-color: #00A8E8;
+  --secondary-color: #436575;
+  --third-color: #FF6F61;
+  --fourth-color: #FFD700;
+  --five-color: #FAFAFA;
+
+  --font-family-base: 'Helvetica Neue', Arial, sans-serif;
+  --font-size-base: 1rem;
+  --line-height-base: 1.5;
+}
+
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--dark-color);
+}
+
+main {
+  min-height: 100vh;
+}
+
+.standard-max-width {
+  max-width: 80%;
+  margin: auto;
+}
+
+.card-body>.btn {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.card-body>.btn:hover {
+  font-size: 18px;
+  color: var(--secondary-color);
+}
+
+.example_list {
+  list-style-type: none;
+  margin-top: 40px;
+}
+
+.example_list li {
+  font-size: 20px;
+  border: 1px solid black;
+  padding: 10px;
+  background-color: var(--secondary-color); /* Asegúrate de definir esta variable en tu CSS */
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.example_list li a {
+  color: white;
+  text-decoration: none;
+}
+
+.example-list {
+  width: 500px;
+  max-width: 100%;
+  border: solid 1px #ccc;
+  min-height: 60px;
+  display: block;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.example-box {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}
+
+/* Botones */
+
+.btn-return {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--five-color);
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-return:hover {
+  background-color: var(--secondary-color);
+}
+
+.btn-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
