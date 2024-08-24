@@ -1,0 +1,14 @@
+<div class="row mx-auto mb-4">
+  <div class="col-6 d-flex align-items-start">
+    <a *ngIf="back" [href]="uriBack" class="btn-default">
+      <img [src]="iconoVolver" alt="Devolver" class="btn-icon me-3">
+      {{ textBack }}
+    </a>
+  </div>
+  <div class="col-6 d-flex justify-content-end align-items-end">
+    <a *ngIf="next" [href]="uriNext" class="btn-default">
+      {{ textNext }}
+      <img [src]="iconoSeguir" alt="Seguir" class="btn-icon ms-3">
+    </a>
+  </div>
+</div>

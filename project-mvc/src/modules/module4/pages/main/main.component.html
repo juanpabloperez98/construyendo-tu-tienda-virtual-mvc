@@ -1,0 +1,87 @@
+<app-header></app-header>
+<div class="standard-max-width">
+  <div class="content-main">
+    <app-return></app-return>
+    <div class="row">
+      <div class="col-6">
+        <h2 class="mb-4">4.1 Introducción al Modelo en MVC</h2>
+        <p class="mt-3 mb-3">
+          El Modelo en el patrón MVC (Modelo-Vista-Controlador) es el componente encargado de la gestión y manipulación
+          de los datos en una aplicación. Representa la lógica de negocio y la estructura de los datos, conectando la
+          aplicación con la base de datos o cualquier otra fuente de datos. En términos sencillos, el Modelo es el
+          encargado de interactuar con la base de datos, realizar consultas, actualizaciones, eliminaciones, y cualquier
+          otra operación relacionada con los datos. <br> <br>
+          En el contexto de una tienda virtual, el Modelo podría representar entidades como Productos, Usuarios,
+          Órdenes, etc. Cada una de estas entidades tendrá sus atributos y métodos que permitirán realizar operaciones
+          sobre los datos de forma estructurada.
+        </p>
+      </div>
+      <div class="col-6">
+        <h2 class="mb-4">4.2 ¿Qué es SQLAlchemy?</h2>
+        <p class="mt-3 mb-3">
+          SQLAlchemy es una biblioteca de Python que permite trabajar con bases de datos de una manera más abstracta y
+          poderosa. Actúa como un ORM (Object-Relational Mapping), lo que significa que convierte tablas de bases de
+          datos en clases Python y filas de esas tablas en objetos Python. Esto simplifica la interacción con la base de
+          datos, permitiendo trabajar con objetos en lugar de escribir consultas SQL crudas.
+        </p>
+        <div class="content-img">
+          <img src="./assets/bd/bd.png" width="120%" alt="Bases de datos">
+        </div>
+      </div>
+      <div class="col-6">
+        <h2 class="mb-4">4.3 Definiendo Modelos con SQLAlchemy</h2>
+        <p class="mt-3 mb-3">
+          Al usar SQLAlchemy en Flask, los modelos se definen como clases de Python que heredan de Base o db.Model en
+          Flask. Cada clase representa una tabla en la base de datos, y cada atributo de la clase representa una columna
+          en dicha tabla.
+        </p>
+        <h4>Ejemplo</h4>
+        <pre class="language-language-markup line-numbers">
+          <code class="language-python">{{ code1 }}
+          </code>
+        </pre>
+        <ul class="mt-3">
+          <li>__tablename__: Especifica el nombre de la tabla en la base de datos. <br></li>
+          <li>id: Es la clave primaria del producto. <br></li>
+          <li>nombre, descripcion, precio, stock: Son las columnas de la tabla, cada una con su tipo de dato
+            correspondiente. <br></li>
+        </ul>
+      </div>
+      <div class="col-6">
+        <h2 class="mb-4">4.4 Implementación del Modelo en Flask</h2>
+        <p class="mt-3 mb-3">
+          Para usar los modelos en Flask, primero se debe configurar la aplicación para que funcione con SQLAlchemy:
+        </p>
+        <h4>Ejemplo</h4>
+        <pre class="language-language-markup line-numbers">
+          <code class="language-python">{{ code2 }}
+          </code>
+        </pre>
+        <p class="mt-3 mb-3">
+          Aquí, SQLALCHEMY_DATABASE_URI se utiliza para especificar la base de datos con la que trabajará la aplicación.
+          En este caso, se usa PostgreSQL.
+        </p>
+        <div class="content-img">
+          <img src="./assets/modelo/flask.jpeg" width="120%" alt="Bases de datos">
+        </div>
+      </div>
+      <div class="col-12 mt-3">
+        <h2 class="mb-4">4.5 Realizando Consultas a la Base de Datos</h2>
+        <p class="mt-3 mb-3">
+          Una vez definidos los modelos, se pueden realizar varias operaciones sobre la base de datos usando SQLAlchemy.
+        </p>
+        <h4>Crear un nuevo producto</h4>
+        <pre class="language-language-markup line-numbers">
+          <code class="language-python">{{ code3 }}
+          </code>
+        </pre>
+        <h4>Consultar productos</h4>
+        <pre class="language-language-markup line-numbers">
+          <code class="language-python">{{ code3 }}
+          </code>
+        </pre>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

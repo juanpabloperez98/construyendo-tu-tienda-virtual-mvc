@@ -4,12 +4,16 @@ import { MainComponent } from './pages/main/main.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { module1PageRoutes } from './module1-app-routing.module';
+import { Ejemplo1Component } from './pages/ejemplo1/ejemplo1.component';
+import { Ejemplo2Component } from './pages/ejemplo2/ejemplo2.component';
 
 
 
 @NgModule({
   declarations: [
-    MainComponent
+    MainComponent,
+    Ejemplo1Component,
+    Ejemplo2Component
   ],
   imports: [
     CommonModule,

@@ -1,20 +1,10 @@
 <app-header></app-header>
 <div class="standard-max-width">
-  <div class="content">
-    <div class="row mx-auto mb-4">
-      <div class="col-6 d-flex align-items-start">
-        <a href="#" class="btn-return">
-          <img [src]="iconoVolver" alt="Devolver" class="btn-icon">
-          <!-- Devolver -->
-        </a>
-      </div>
-      <div class="col-6 d-flex justify-content-end align-items-end">
-        <a href="#" class="btn-return">
-          <img [src]="iconoSeguir" alt="Seguir" class="btn-icon">
-          <!-- Seguir -->
-        </a>
-      </div>
-    </div>
+  <div class="content-main">
+    <app-return
+      [next]="true"
+      [textNext]="textNext"
+    ></app-return>
     <hr>
     <div class="row">
       <div class="col-6">
@@ -297,17 +287,17 @@
       <div class="col-6">
         <ul class="example_list">
           <li>
-            <a routerLink="/introduccionMVC/ejemplo1">
+            <a routerLink="/introduccion_patron_diseno_mvc/ejemplo-1">
               Ejemplo 1: Sistema de Reservas de Hoteles
             </a>
           </li>
           <li>
-            <a routerLink="/introduccionMVC/ejemplo1">
+            <a routerLink="/introduccion_patron_diseno_mvc/ejemplo-2">
               Ejemplo 2: Sistema de Gestión de Biblioteca
             </a>
           </li>
           <li>
-            <a routerLink="/introduccionMVC/ejemplo1">
+            <a>
               Ejemplo 3: Aplicación de Reproductor de Música
             </a>
           </li>

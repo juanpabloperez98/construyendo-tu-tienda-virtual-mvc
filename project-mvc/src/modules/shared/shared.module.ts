@@ -4,13 +4,15 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HighlightService } from './services/highlight.service';
 import { VariablesGlobalesService } from './services/variables-globales.service';
+import { ReturnComponent } from './return/return.component';
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ReturnComponent
   ],
   imports: [
     CommonModule
@@ -21,7 +23,8 @@ import { VariablesGlobalesService } from './services/variables-globales.service'
   ],
   exports:[
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ReturnComponent
   ]
 })
 export class SharedModule { }

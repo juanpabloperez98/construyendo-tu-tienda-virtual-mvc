@@ -23,7 +23,7 @@ export class MainPageComponent implements OnInit{
       imgAlt: 'main.jfif',
       title: '2. Configurando el entorno de desarrollo',
       description: 'Tras adentrarte en los fundamentos del patrón MVC, es hora de dar un paso esencial: preparar tu espacio de trabajo. En este segundo módulo, nos centraremos en configurar el entorno de desarrollo, asegurándonos de que dispongas de todas las herramientas y recursos necesarios para construir, probar y desplegar tu tienda virtual con eficiencia.',
-      routerLink: '/configuracionIDE/main'
+      routerLink: '/configuracion-ide/main'
     },
     {
       imgSrc: './assets/bd/main.png',
@@ -37,7 +37,7 @@ export class MainPageComponent implements OnInit{
       imgAlt: 'main.png',
       title: '4. Creando el Modelo en MVC',
       description: 'Este módulo es una exploración profunda del Modelo, la pieza fundamental que se encarga de organizar y gestionar los datos de nuestra aplicación. Desde la manipulación de la información hasta la comunicación con la base de datos, aprenderemos cómo el Modelo desempeña un papel clave en la construcción de aplicaciones robustas y eficientes.',
-      routerLink: '/introduccionMVC/main'
+      routerLink: '/creando-modelo-mvc/main'
     },
     {
       imgSrc: './assets/vista/vista.png',

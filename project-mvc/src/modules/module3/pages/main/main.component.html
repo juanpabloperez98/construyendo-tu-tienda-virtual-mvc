@@ -1,0 +1,633 @@
+<app-header></app-header>
+<div class="standard-max-width">
+  <div class="content-main">
+    <app-return></app-return>
+
+    <div class="row">
+      <div class="col-6">
+        <h2 class="mb-4">3.1 Introducción al Diseño de Bases de Datos</h2>
+        <p class="mt-3 mb-3">
+          En esta sección, nos adentraremos en los conceptos fundamentales del diseño de bases de datos y su relevancia
+          en
+          el desarrollo de aplicaciones, especialmente cuando se implementa el patrón Modelo-Vista-Controlador (MVC).
+        </p>
+        <h3 class="mb-4">3.1.1 Definición de Conceptos Clave</h3>
+
+        <p>
+          <span>Tablas:</span> Las tablas son estructuras fundamentales en una base de datos relacional. Representan
+          entidades
+          específicas, como usuarios, productos o pedidos, y están organizadas en filas y columnas.
+        </p>
+
+        <p>
+          <span>Registros:</span> Cada fila en una tabla se conoce como un registro. Es una instancia individual de la
+          entidad que la
+          tabla representa. Por ejemplo, en una tabla de usuarios, cada fila podría representar a un usuario específico.
+        </p>
+
+        <p>
+          <span>Campos:</span> Las columnas de una tabla se llaman campos. Cada campo almacena un tipo específico de
+          información, como
+          el nombre de un producto, el precio o la descripción.
+        </p>
+
+        <p>
+          <span>Claves primarias:</span> Una clave primaria es un campo o conjunto de campos que identifica de manera
+          única cada
+          registro en una tabla. Garantiza que no haya duplicados y facilita la indexación y búsqueda eficiente.
+        </p>
+
+        <p>
+          <span>Claves foráneas:</span> Las claves foráneas establecen relaciones entre tablas. Se utilizan para
+          vincular registros en
+          una tabla con registros en otra. Por ejemplo, la clave foránea en una tabla de pedidos puede hacer referencia
+          a
+          la clave primaria de la tabla de usuarios.
+        </p>
+      </div>
+      <div class="col-6 content-img">
+        <br>
+        <img src="./assets/bd/main.png" width="120%" alt="Bases de datos">
+        <br>
+        <img src="./assets/bd/bd.png" width="120%" alt="Bases de datos">
+      </div>
+    </div>
+    <hr>
+    <div class="row mt-5">
+      <div class="col-12">
+        <h2>3.2 Tipos de bases de datos</h2>
+        <p class="mt-2">
+          Los tipos de bases de datos se pueden clasificar en varias categorías según diferentes criterios, como la
+          estructura de los datos, la forma en que se accede a ellos, la relación entre los datos, entre otros.
+          Algunas de las clasificaciones comunes de bases de datos incluyen:
+        </p>
+        <ol>
+          <li>
+            <p>
+              <span>Bases de datos relacionales (RDBMS):</span> Este tipo de bases de datos organizan los datos en
+              tablas con filas y columnas. Utilizan un lenguaje de consulta estructurado (SQL) para acceder y
+              manipular los datos. Ejemplos de sistemas de gestión de bases de datos relacionales (RDBMS) incluyen
+              MySQL, PostgreSQL, Oracle, SQL Server, entre otros.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Bases de datos NoSQL:</span> Estas bases de datos están diseñadas para manejar grandes volúmenes
+              de datos no estructurados o semi-estructurados. No siguen el modelo relacional de las bases de datos
+              tradicionales y pueden ser altamente escalables y flexibles. Algunas categorías de bases de datos NoSQL
+              incluyen:
+            </p>
+            <ul>
+              <li>
+                <p>
+                  <span>Documentales:</span> Almacenan datos en documentos, como JSON o XML. Algunos de los ejemplos
+                  incluyen MongoDB, Couchbase.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span>Clave-valor:</span> Almacenan datos en una estructura clave-valor simple. Algunos de los
+                  ejemplos incluyen Redis, DynamoDB.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span>Columnares:</span> Almacenan datos en columnas en lugar de filas, lo que puede ser eficiente
+                  para ciertos tipos de consultas. Alguno de los ejemplos incluyen Cassandra, HBase.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span>Grafos:</span> Almacenan datos en forma de nodos y relaciones entre ellos. Algunos de los
+                  ejemplos incluyen Neo4j, Amazon Neptune.
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>
+              <span>Bases de datos de almacén de datos (Data Warehouses):</span> Estas bases de datos están
+              optimizadas para el análisis y la generación de informes sobre grandes conjuntos de datos. Suelen
+              contener datos históricos y se utilizan para la toma de decisiones empresariales. Ejemplos incluyen
+              Snowflake, Amazon Redshift, Google BigQuery.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Bases de datos en memoria:</span> Estas bases de datos almacenan datos en la memoria principal
+              en lugar de en discos, lo que puede proporcionar una velocidad de acceso muy alta. Ejemplos incluyen
+              Redis, Memcached.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Bases de datos orientadas a objetos:</span> Estas bases de datos están diseñadas para almacenar
+              datos en forma de objetos, lo que facilita la representación de estructuras complejas. Ejemplos
+              incluyen db4o, ObjectDB.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Bases de datos distribuidas:</span> Estas bases de datos distribuyen datos a través de múltiples
+              nodos en una red de computadoras, lo que permite escalabilidad y tolerancia a fallos. Ejemplos incluyen
+              CockroachDB, Cassandra.
+            </p>
+          </li>
+        </ol>
+        <p>
+          Estas son algunas de las principales categorías de bases de datos, pero el panorama de las bases de datos
+          es amplio y diverso, y hay muchas otras categorías y tipos especializados que se utilizan en diferentes
+          aplicaciones y escenarios.
+        </p>
+      </div>
+    </div>
+    <hr>
+    <div class="row mt-5">
+      <div class="col-6">
+        <h2 class="mb-4">3.3 Bases de datos relacionales</h2>
+        <p>
+          Una base de datos relacional es un sistema de gestión de bases de datos (RDBMS, por sus siglas en inglés)
+          que organiza los datos de manera estructurada utilizando el modelo relacional. En una base de datos
+          relacional, la información se almacena en tablas, que consisten en filas y columnas. Cada fila representa
+          una entidad individual y cada columna representa un atributo de esa entidad.
+          <br><br>
+          Una base de datos relacional es un sistema de gestión de bases de datos que organiza los datos en tablas
+          relacionadas entre sí mediante claves primarias y externas. Este enfoque proporciona una forma estructurada
+          y eficiente de almacenar y manipular datos, lo que la convierte en una herramienta fundamental en el mundo
+          de la informática y la gestión de datos.
+        </p>
+        <h4>Estructura de las bases de datos relacionales</h4>
+        <ol>
+          <li>
+            <p>
+              <span>Tablas:</span> Los datos se almacenan en tablas bidimensionales con filas y columnas. Cada tabla
+              tiene un nombre único y cada columna tiene un nombre y un tipo de datos asociados.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Claves primarias:</span> Cada tabla tiene una o más columnas que actúan como claves primarias, lo
+              que significa que contienen valores únicos para cada fila y sirven como identificador único de esa fila.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Relaciones:</span> Las tablas se pueden relacionar entre sí mediante el uso de claves externas.
+              Esto permite establecer relaciones entre los datos de diferentes tablas, lo que facilita la consulta y
+              la manipulación de los datos.
+            </p>
+          </li>
+        </ol>
+      </div>
+      <div class="col-6">
+        <h4>Funcionamiento de las bases de datos relacionales</h4>
+        <ol>
+          <li>
+            <p>
+              <span>Lenguaje de consulta estructurado (SQL):</span> Se utiliza para interactuar con las bases de
+              datos relacionales. Con SQL, puedes realizar cualquier operación de los datos en las tablas.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Integridad referencial:</span> Las bases de datos relacionales mantienen la integridad
+              referencial para garantizar que las relaciones entre las tablas sean válidas. Esto significa que no
+              puedes eliminar filas de una tabla si existen filas relacionadas en otras tablas.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Transacciones:</span> Las bases de datos relacionales admiten el concepto de transacciones, que
+              son unidades de trabajo indivisibles que garantizan la integridad de los datos.
+            </p>
+          </li>
+        </ol>
+        <h4>Importancia de las bases de datos relacionales</h4>
+        <ol>
+          <li>
+            <p>
+              <span>Estructura flexible y escalable:</span> El modelo relacional permite una estructura flexible para
+              organizar los datos. Además, las bases de datos relacionales son altamente escalables y pueden manejar
+              grandes volúmenes de datos.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Integridad y consistencia de los datos:</span> Las bases de datos relacionales ofrecen mecanismos
+              para garantizar la integridad de los datos, como las restricciones de clave primaria, lo que ayuda a
+              prevenir errores.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Consultas complejas y eficientes:</span> El modelo relacional permite realizar consultas
+              complejas utilizando SQL, lo que facilita la extracción de información útil de los datos almacenados
+              en las bases de datos.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <hr>
+    <div class="row mt-5">
+      <div class="col-12">
+        <h2 class="mb-4">3.4 Lenguaje SQL</h2>
+        <p>
+          El lenguaje SQL (Structured Query Language) es un lenguaje de programación utilizado para administrar y
+          manipular bases de datos relacionales. Fue desarrollado inicialmente por IBM en la década de 1970 y se ha
+          convertido en un estándar de facto para la gestión de datos en sistemas de bases de datos relacionales. SQL
+          se utiliza para realizar una variedad de tareas, incluyendo la creación y modificación de bases de datos,
+          la inserción, actualización y eliminación de datos, y la consulta de datos para obtener información
+          específica. Con SQL, los usuarios pueden definir la estructura de la base de datos, crear tablas, establecer
+          relaciones entre ellas, y realizar consultas complejas para extraer y manipular datos de manera eficiente.
+          El lenguaje SQL consta de varios tipos de instrucciones, incluyendo:
+        </p>
+        <ol>
+          <li>
+            <p>
+              <span>DDL (Data Definition Language):</span> Utilizado para definir la estructura de la base de datos,
+              como la creación de tablas, la modificación de tablas existentes y la eliminación de tablas.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>DML (Data Manipulation Language):</span> Utilizado para manipular datos dentro de la base de
+              datos, incluyendo la inserción, actualización y eliminación de registros en tablas.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>DQL (Data Query Language):</span> Utilizado para realizar consultas para recuperar datos de la
+              base de datos.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>DCL (Data Control Language):</span> Utilizado para establecer permisos y control de acceso a la
+              base de datos, como otorgar privilegios de acceso a usuarios y revocarlos.
+            </p>
+          </li>
+        </ol>
+        <p>
+          SQL es un lenguaje poderoso y versátil que se utiliza en una amplia gama de aplicaciones y entornos, desde
+          sistemas de gestión de bases de datos relacionales como MySQL, PostgreSQL, Oracle y SQL Server, hasta
+          aplicaciones web y de software empresarial.
+        </p>
+        <h4>3.4.1 Sintaxis del lenguaje SQL</h4>
+        <p>
+          La sintaxis del lenguaje SQL puede variar ligeramente entre diferentes sistemas de gestión de bases de
+          datos (DBMS), pero en general sigue una estructura similar. Aquí hay una descripción básica de la sintaxis
+          común en SQL:
+        </p>
+        <ol>
+          <li>
+            <p>
+              <span>Comentarios:</span> Los comentarios en SQL se pueden hacer de varias maneras dependiendo del DBMS,
+              pero generalmente se utilizan dos tipos: de línea única <span>(`-- comentario`)</span> o de múltiples
+              líneas <span>(`/* comentario */`)</span>.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Instrucciones SQL:</span> Las instrucciones SQL se divide en varias categorias principales:
+            </p>
+            <ul>
+              <li>
+                <p>
+                  <span>DDL (Data Definition Language):</span> Instrucciones para definir y modificar la estructura
+                  de la base de datos. Ejemplos incluyen <span>`CREATE`</span>, <span>`ALTER`</span>,
+                  <span>`DROP`</span>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span>DML (Data Manipulation Language):</span> Instrucciones para manipular datos en la base de
+                  datos. Ejemplos incluyen <span>`INSERT`</span>, <span>`UPDATE`</span>, <span>`DELETE`</span>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span>DQL (Data Query Language):</span> Instrucciones para recuperar datos de la base de datos.
+                  Ejemplo principal es <span>`SELECT`</span>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span>DCL (Data Control Language):</span> Instrucciones para gestionar permisos y acceso a datos.
+                  Ejemplos incluyen <span>`GRANT`</span>, <span>`REVOKE`</span>.
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>
+              <span>Cláusulas:</span> Las instrucciones SQL generalmente se componen de varias cláusulas que
+              especifican diferentes aspectos de la operación. Algunas cláusulas comunes son:
+            </p>
+            <ul>
+              <li>
+                <p>
+                  <span>FROM:</span> Especifica las tablas de donde se obtienen los datos.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span>WHERE:</span> Filtra los datos basados en una condición especificada.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span>GROUP BY:</span> Agrupa filas que tienen valores idénticos en una o más columnas
+                  especificadas.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span>HAVING:</span> Filtra los grupos resultantes basados en una condición especificada después de
+                  la cláusula <span>`GROUP BY`</span>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span>ORDER BY:</span> Ordena los resultados según una o más columnas especificadas.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span>LIMIT (o equivalente):</span> Limita el número de filas devueltas por la consulta.
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>
+              <span>Expresiones:</span> Las expresiones son usadas en varias partes de las instrucciones SQL para
+              realizar cálculos, comparaciones, o para especificar valores.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Funciones:</span> Las funciones en SQL pueden ser funciones de agregación (como <span>`SUM`</span>,
+              <span>`COUNT`</span>, <span>`AVG`</span>), funciones de cadena (como <span>`SUBSTRING`</span>,
+              <span>`CONCAT`</span>), funciones matemáticas, funciones de fecha y hora, entre otros.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Operadores:</span> SQL incluye operadores para comparaciones (<span>`=`</span>, <span>`!=`</span>,
+              <span>`<`</span>, <span>`>`</span>), operadores lógicos (<span>`AND`</span>, <span>`OR`</span>,
+              <span>`NOT`</span>), operadores aritméticos (<span>`+`</span>, <span>`-`</span>, <span>`*`</span>,
+              <span>`/`</span>), entre otros.
+            </p>
+          </li>
+        </ol>
+        <p>Aquí hay un ejemplo básico de sintaxis SQL para realizar un CRUD simple:</p>
+        <pre class="language-language-markup line-numbers">
+          <code class="language-python">{{ code1 }}
+          </code>
+        </pre>
+        <p>
+          En este ejemplo, <span>`SELECT`</span> se utiliza para seleccionar las columnas específicas que se desean
+          mostrar en los resultados, <span>`FROM`</span> especifica la tabla de donde se obtienen los datos,
+          <span>`WHERE`</span> se utiliza para filtrar los datos basados en una condición especificada, y
+          <span>`ORDER BY`</span> se usa para ordenar los resultados.
+        </p>
+      </div>
+    </div>
+    <hr>
+    <div class="row mt-5">
+      <div class="col-6">
+        <h2 class="mb-4">3.5 Gestores de bases de datos</h2>
+      </div>
+      <div class="col-12">
+        <p>Los gestores de datos son programas o sistemas que permiten almacenar, organizar, recuperar y manipular
+          información de manera eficiente y segura. Estos sistemas gestionan la creación, lectura, actualización y
+          eliminación de datos, garantizando su integridad y disponibilidad para su uso en diversas aplicaciones y
+          procesos. En resumen, los gestores de datos son herramientas fundamentales para administrar y gestionar la
+          información de manera efectiva en cualquier entorno, desde bases de datos tradicionales hasta sistemas más
+          avanzados de gestión de datos.</p>
+      </div>
+      <div class="col-6">
+        <h4>MySQL</h4>
+        <p>MySQL es un sistema de gestión de bases de datos relacional (RDBMS, por sus siglas en inglés) de código
+          abierto muy popular. Fue desarrollado inicialmente por MySQL AB (adquirida por Sun Microsystems y
+          posteriormente por Oracle Corporation). MySQL es ampliamente utilizado en aplicaciones web debido a su
+          facilidad de uso, rendimiento confiable y capacidad de escalar para manejar grandes volúmenes de datos.
+
+          En cuanto a su utilización, MySQL se emplea principalmente para almacenar y administrar datos en sitios
+          web y aplicaciones. Algunas de sus características y usos más comunes incluyen:
+        </p>
+        <ol>
+          <li>
+            <p>
+              <span>Almacenamiento de datos:</span> MySQL permite almacenar datos estructurados en tablas que
+              pueden relacionarse entre sí mediante claves primarias y claves foráneas.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Acceso y manipulación de datos:</span> Los usuarios pueden realizar consultas SQL (Structured
+              Query Language) para recuperar, insertar, actualizar y eliminar datos de las tablas de la base de
+              datos.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Soporte para transacciones:</span> MySQL es compatible con transacciones ACID (Atomicidad,
+              Consistencia, Aislamiento y Durabilidad), lo que garantiza la integridad de los datos incluso en
+              entornos de múltiples usuarios concurrentes.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Escalabilidad:</span> MySQL es altamente escalable, lo que significa que puede manejar grandes
+              cantidades de datos y un alto volumen de transacciones. Esto lo hace adecuado para aplicaciones web
+              de alto tráfico.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Compatibilidad con múltiples plataformas:</span> MySQL está disponible para varias plataformas,
+              incluyendo Linux, Windows y macOS, lo que facilita su implementación en diferentes entornos.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Integración con lenguajes de programación:</span> MySQL se puede integrar fácilmente con varios
+              lenguajes de programación, como PHP, Python, Java, Ruby, entre otros, lo que permite a los
+              desarrolladores crear aplicaciones web dinámicas que interactúen con la base de datos.
+            </p>
+          </li>
+        </ol>
+      </div>
+      <div class="col-6">
+        <h4>PostgreSQL</h4>
+        <p>
+          PostgreSQL es un sistema de gestión de bases de datos relacional (RDBMS) de código abierto, ampliamente
+          conocido por su robustez, confiabilidad y funcionalidades avanzadas. A menudo se abrevia como "Postgres".
+          A diferencia de MySQL, PostgreSQL se enfoca en la conformidad con los estándares SQL y en ofrecer
+          características avanzadas, incluyendo soporte para funciones y procedimientos almacenados, vistas
+          materializadas, claves foráneas diferidas, y tipos de datos personalizados, entre otros.
+
+          Aquí hay una descripción de cómo se utiliza PostgreSQL:
+        </p>
+        <ol>
+          <li>
+            <p>
+              <span>Almacenamiento de datos:</span> PostgreSQL permite almacenar datos estructurados en tablas
+              relacionales, similar a otros sistemas de gestión de bases de datos. Las tablas pueden estar
+              interconectadas mediante claves primarias y foráneas para establecer relaciones entre los datos.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Acceso y manipulación de datos:</span> Los usuarios pueden realizar consultas SQL (Structured
+              Query Language) para recuperar, insertar, actualizar y eliminar datos de las tablas de la base de datos.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Características avanzadas:</span> PostgreSQL ofrece características avanzadas que van más allá de
+              las funciones básicas de un RDBMS. Estas incluyen soporte para transacciones ACID, vistas materializadas
+              que almacenan resultados de consultas para un acceso más rápido, procedimientos almacenados y funciones
+              definidas por el usuario que permiten ejecutar lógica de negocio directamente en el servidor de la base
+              de datos, y tipos de datos personalizados que permiten a los desarrolladores definir sus propios tipos
+              de datos.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Escalabilidad y rendimiento:</span> PostgreSQL es altamente escalable y puede manejar grandes
+              volúmenes de datos y cargas de trabajo exigentes. Ofrece diversas técnicas de optimización para mejorar
+              el rendimiento de las consultas, incluyendo índices, estadísticas y optimización de consultas.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Seguridad:</span> PostgreSQL ofrece características avanzadas de seguridad, incluyendo
+              autenticación basada en roles, control de acceso a nivel de tabla y cifrado de datos.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span>Compatibilidad con múltiples plataformas:</span> PostgreSQL está disponible para varias
+              plataformas, incluyendo Linux, Windows, macOS y otros sistemas operativos, lo que facilita su
+              implementación en diferentes entornos.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <hr>
+    <div class="row mt-5">
+      <div class="col-lg-12 mb-4">
+        <h3>3.6 Ejemplo: Operaciones CRUD en PostgreSQL con Python y psycopg2</h3>
+        <p>
+          En este ejercicio, aprenderás cómo realizar operaciones básicas de Crear, Leer, Actualizar y Eliminar
+          (CRUD) en una base de datos PostgreSQL utilizando Python y la biblioteca psycopg2. Usarás un ejemplo
+          simple de una tabla de usuarios para practicar las siguientes operaciones:
+        </p>
+        <ul>
+          <li>
+            <p>
+              Crear un nuevo usuario en la base de datos.
+            </p>
+          </li>
+          <li>
+            <p>
+              Leer todos los usuarios existentes.
+            </p>
+          </li>
+          <li>
+            <p>
+              Actualizar el correo electrónico de un usuario específico.
+            </p>
+          </li>
+          <li>
+            <p>
+              Eliminar un usuario de la base de datos.
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div class="col-12">
+        <h5>Modelo de CRUD simple utilizando PostgreSQL</h5>
+        <pre class="language-language-markup line-numbers">
+          <code class="language-python">{{ code2 }}
+          </code>
+        </pre>
+      </div>
+    </div>
+    <hr>
+    <div class="row mt-5">
+      <div class="col-6">
+        <h3>3.7 Ejemplos</h3>
+        <p class="mt-3">
+          Dentro del fascinante mundo del desarrollo de software, la sección de "Ejemplos" es una ventana que nos
+          permite
+          observar directamente la aplicación de conceptos teóricos en situaciones prácticas. En este módulo, nos
+          sumergiremos en ejemplos concretos de SQL, una herramienta muy poderosa para el manejo de bases de datos.
+
+          En el contexto del patrón Modelo-Vista-Controlador (MVC), exploraremos la implementación práctica de algunas
+          bases de datos. A través de la ejecución de código real, visualizaremos la manera en que funciona este
+          lenguaje, observando cómo se logra la manipulación de las bases de datos. <br>
+
+          Los ejemplos presentados a continuación servirán como guía para comprender cómo las bases de datos cobran
+          vida en proyectos reales. Veremos cómo las distintas partes de la base de datos colaboran para crear
+          aplicaciones funcionales y cómo la teoría se traduce de manera efectiva en la realidad del desarrollo. <br>
+
+          ¡Acompáñanos en este recorrido práctico y descubre cómo SQL puede ser aliado poderoso en la creación de
+          aplicaciones web robustas y estructuradas bajo el paradigma MVC!
+        </p>
+      </div>
+      <div class="col-6">
+        <ul class="example_list">
+          <li>
+            <a routerLink="/configuracionIDE/ejemplo1">
+              Ejemplo 1: Encontrar Números Primos
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Ejemplo 2: Juego de Ahorcado
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Ejemplo 3: Aplicación de Reproductor de Música
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-6">
+        <ul class="example_list">
+          <li>
+            <a routerLink="/introduccionMVC/ejercicio1">Ejercicio 1: Sistema de Gestión de Tareas</a>
+          </li>
+          <li>
+            <a href="#">Ejercicio 2: Nombre del ejercicio</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-6">
+        <h3>3.8 Ejercicios</h3>
+        <p class="mt-3">
+          Después de navegar por las aguas teóricas del patrón Modelo-Vista-Controlador, es el momento de zarpar hacia
+          la
+          práctica. Los conceptos, por muy claros que sean en la teoría, encuentran su verdadero valor cuando los
+          ponemos
+          a prueba. Esta sección de "Ejercicios" ha sido diseñada específicamente para ofrecerte ese reto.
+
+          Aquí, te encontrarás con una serie de desafíos prácticos que te animarán a aplicar lo que has aprendido sobre
+          el
+          MVC. Desde la creación de pequeños fragmentos de código hasta la construcción de componentes sencillos, estos
+          ejercicios te empujarán a pensar, diseñar y desarrollar utilizando el patrón MVC.
+
+          Más allá de solo escribir código, se te invitará a tomar decisiones, a enfrentar problemas comunes y a idear
+          soluciones que reflejen una comprensión sólida del MVC.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

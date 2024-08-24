@@ -1,0 +1,161 @@
+<app-header></app-header>
+<div class="standard-max-width">
+  <div class="content-main">
+    <app-return
+      [back]="true"
+      [textNext]="textBackModule"
+      [uriBack]="uriBack"
+    ></app-return>
+    <div class="row">
+      <div class="col-12 content-title">
+        <h3>
+          Sistema de Gestión de Biblioteca
+        </h3>
+        <p>
+          En este ejemplo, vamos a explorar cómo se puede diseñar un Sistema de Gestión de Biblioteca básico utilizando el patrón Modelo-Vista-Controlador (MVC). A través de este ejercicio,
+          descubriremos cómo se puede gestionar la información de los libros,
+          cómo se procesan los préstamos y devoluciones,
+          y cómo se presenta la información al usuario,
+          todo ello siguiendo el flujo cohesivo y estructurado que proporciona el MVC.
+        </p>
+      </div>
+      <div class="row mt-5" *ngIf="show1">
+        <div class="col-6">
+          <h4 class="mb-3">Modelo (usando SQLAlchemy para ORM)</h4>
+          <pre class="language-language-markup line-numbers">
+            <code class="language-python">{{ code }}
+            </code>
+            <span [style]="line_style"  [style.top]="top_style" class="line-explain"> </span>
+          </pre>
+        </div>
+        <div class="col-6 content-explain">
+          <h5>Explicación</h5>
+          <div>
+            <p>
+              {{ explain_txt }}
+            </p>
+          </div>
+          <h5>Variables</h5>
+          <div>
+            <p class="text-center">
+              {{ explain_line }}
+            </p>
+          </div>
+          <div class="text-center" [ngClass]="{'no-display': start}">
+            <a class="btn-default" (click)="onStart()">Empezar</a>
+          </div>
+          <div class="text-center"[ngClass]="{'no-display': !start && finish}">
+            <a (click)="back()" class="btn-default"><</a>
+            <a (click)="next()" class="btn-default ms-1">></a>
+          </div>
+          <div class="text-center mt-5" [ngClass]="{'no-display': finish}">
+            <a (click)="showView(1)" class="btn-default">Siguiente ></a>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5" *ngIf="show2">
+        <div class="col-6">
+          <h4 class="mb-3">Vista listado de libros (libros.html)</h4>
+          <pre class="language-language-markup line-numbers">
+            <code class="language-html">{{ code2 }}
+            </code>
+            <span [style]="line_style"  [style.top]="top_style" class="line-explain"> </span>
+          </pre>
+        </div>
+        <div class="col-6 content-explain">
+          <h5>Explicación</h5>
+          <div>
+            <p>
+              {{ explain_txt }}
+            </p>
+          </div>
+          <h5>Variables</h5>
+          <div>
+            <p>
+              {{ explain_line }}
+            </p>
+          </div>
+          <div class="text-center" [ngClass]="{'no-display': start}">
+            <a class="btn-default" (click)="onStart()">Empezar</a>
+          </div>
+          <div class="text-center"[ngClass]="{'no-display': !start && finish}">
+            <a (click)="back()" class="btn-default"><</a>
+            <a (click)="next()" class="btn-default ms-1">></a>
+          </div>
+          <div class="text-center mt-5" [ngClass]="{'no-display': finish}">
+            <a (click)="showView(2)" class="btn-default">Ver vista 2</a>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5" *ngIf="show3">
+        <div class="col-6">
+          <h4 class="mb-3">Vista Agregar Libros (agregrar.html)</h4>
+          <pre class="language-language-markup line-numbers">
+            <code class="language-html">{{ code3 }}
+            </code>
+            <span [style]="line_style"  [style.top]="top_style" class="line-explain"> </span>
+          </pre>
+        </div>
+        <div class="col-6 content-explain">
+          <h5>Explicación</h5>
+          <div>
+            <p>
+              {{ explain_txt }}
+            </p>
+          </div>
+          <h5>Variables</h5>
+          <div>
+            <p>
+              {{ explain_line }}
+            </p>
+          </div>
+          <div class="text-center" [ngClass]="{'no-display': start}">
+            <a class="btn-default" (click)="onStart()">Empezar</a>
+          </div>
+          <div class="text-center"[ngClass]="{'no-display': !start && finish}">
+            <a (click)="back()" class="btn-default"><</a>
+            <a (click)="next()" class="btn-default ms-1">></a>
+          </div>
+          <div class="text-center mt-5" [ngClass]="{'no-display': finish}">
+            <a (click)="showView(3)" class="btn-default">Ver controlador</a>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5" *ngIf="show4">
+        <div class="col-6">
+          <h4 class="mb-3">Controlador (Rutas en Flask)</h4>
+          <pre class="language-language-markup line-numbers">
+            <code class="language-python">{{ code4 }}
+            </code>
+            <span [style]="line_style"  [style.top]="top_style" class="line-explain"> </span>
+          </pre>
+        </div>
+        <div class="col-6 content-explain">
+          <h5>Explicación</h5>
+          <div>
+            <p>
+              {{ explain_txt }}
+            </p>
+          </div>
+          <h5>Variables</h5>
+          <div>
+            <p class="text-center">
+              {{ explain_line }}
+            </p>
+          </div>
+          <div class="text-center" [ngClass]="{'no-display': start}">
+            <a class="btn-default" (click)="onStart()">Empezar</a>
+          </div>
+          <div class="text-center"[ngClass]="{'no-display': !start && finish}">
+            <a (click)="back()" class="btn-default"><</a>
+            <a (click)="next()" class="btn-default ms-1">></a>
+          </div>
+          <div class="text-center mt-5" [ngClass]="{'no-display': finish}">
+            <a class="btn-default">Volver a ejecutar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -62,9 +62,8 @@ export class MainComponent implements OnInit{
       app.run()
   `
 
-  // Global's variables
-  public iconoVolver:string = '';
-  public iconoSeguir:string = '';
+  // Variables to send
+  textNext = '';
 
   public constructor(
     private highlightService: HighlightService,
@@ -73,8 +72,7 @@ export class MainComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.iconoVolver = this.variablesglobalesservice.iconoVolver;
-    this.iconoSeguir = this.variablesglobalesservice.iconoSeguir;
+    this.textNext = this.variablesglobalesservice.textNext
   }
 
   ngAfterViewChecked() {

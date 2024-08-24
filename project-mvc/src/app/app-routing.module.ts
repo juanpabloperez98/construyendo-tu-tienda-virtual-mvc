@@ -31,6 +31,42 @@ export const AppRoutes: Routes = [
     ],
   },
   {
+    path: '',
+    children: [
+      {
+        path: 'configuracion-ide',
+        loadChildren: () =>
+          import('../modules/module2/module2.module').then(
+            (m) => m.Module2Module
+          ),
+      },
+    ],
+  },
+  {
+    path: '',
+    children: [
+      {
+        path: 'databases',
+        loadChildren: () =>
+          import('../modules/module3/module3.module').then(
+            (m) => m.Module3Module
+          ),
+      },
+    ],
+  },
+  {
+    path: '',
+    children: [
+      {
+        path: 'creando-modelo-mvc',
+        loadChildren: () =>
+          import('../modules/module4/module4.module').then(
+            (m) => m.Module4Module
+          ),
+      },
+    ],
+  },
+  {
     path: '**',
     redirectTo: 'home/main',
   },
