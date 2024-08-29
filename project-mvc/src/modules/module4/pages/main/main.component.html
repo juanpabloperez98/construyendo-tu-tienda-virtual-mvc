@@ -77,9 +77,168 @@
         </pre>
         <h4>Consultar productos</h4>
         <pre class="language-language-markup line-numbers">
-          <code class="language-python">{{ code3 }}
+          <code class="language-python">{{ code4 }}
           </code>
         </pre>
+        <h4>Actualizar producto</h4>
+        <pre class="language-language-markup line-numbers">
+          <code class="language-python">{{ code5 }}
+          </code>
+        </pre>
+        <h4>Eliminar producto</h4>
+        <pre class="language-language-markup line-numbers">
+          <code class="language-python">{{ code6 }}
+          </code>
+        </pre>
+      </div>
+      <div class="col-12 mt-3">
+        <h2 class="mb-4">4.6 Relaciones entre Modelos</h2>
+        <p class="mt-3 mb-3">
+          En una aplicación real, los datos suelen estar relacionados entre sí. SQLAlchemy permite definir relaciones
+          entre modelos de manera sencilla. Estas relaciones pueden ser de uno a uno, uno a muchos o muchos a muchos.
+        </p>
+        <h3 class="mb-4">Relación uno a muchos</h3>
+        <p class="mt-3 mb-3">
+          Imagina que cada Producto pertenece a una Categoría. Una categoría puede tener muchos productos, pero un
+          producto solo pertenece a una categoría.
+        </p>
+        <pre class="language-language-markup line-numbers">
+          <code class="language-python">{{ code7 }}
+          </code>
+          <span [style.top]="top_style1" class="line-explain"> </span>
+          <span [style.top]="top_style2" class="line-explain"> </span>
+        </pre>
+        <p>
+          Aquí, la relación se establece utilizando db.relationship en el modelo Categoria, y db.ForeignKey en el modelo
+          Producto para indicar la clave foránea que referencia la categoría a la que pertenece el producto.
+        </p>
+        <h3 class="mb-4">Relación muchos a muchos</h3>
+        <p>
+          Supongamos que los Productos pueden tener múltiples Etiquetas y cada Etiqueta puede estar asociada a múltiples
+          productos. Esta relación de muchos a muchos se maneja creando una tabla intermedia.
+        </p>
+        <div class="row">
+          <div class="col-6">
+            <pre class="language-language-markup line-numbers">
+              <code class="language-python">{{ code8 }}
+              </code>
+            </pre>
+            <p>
+              Aquí, <span style="font-weight: bold;">productos_etiquetas</span> es la tabla intermedia que contiene las
+              claves foráneas de ambas tablas.
+            </p>
+          </div>
+          <div class="col-6">
+            <pre class="language-language-markup line-numbers">
+              <code class="language-python">{{ code9 }}
+              </code>
+            </pre>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 mt-3">
+        <h2 class="mb-4">4.7 Consultas Avanzadas con SQLAlchemy</h2>
+        <p class="mt-3 mb-3">
+          SQLAlchemy no solo permite realizar consultas simples, sino también operaciones más complejas como filtrados
+          avanzados, ordenamientos y paginación.
+        </p>
+        <div class="row">
+          <div class="col-6">
+            <h4>Filtrados Complejos</h4>
+            <pre class="language-language-markup line-numbers">
+              <code class="language-python">{{ code10 }}
+              </code>
+            </pre>
+          </div>
+          <div class="col-6">
+            <h4>Ordenar Resultados</h4>
+            <pre class="language-language-markup line-numbers">
+              <code class="language-python">{{ code11 }}
+              </code>
+            </pre>
+          </div>
+          <div class="col-12">
+            <h4>Ordenar Resultados</h4>
+            <pre class="language-language-markup line-numbers">
+              <code class="language-python">{{ code11 }}
+              </code>
+            </pre>
+          </div>
+        </div>
+        <p>
+          Estas capacidades permiten manejar grandes volúmenes de datos y mejorar la eficiencia de la aplicación al
+          trabajar con bases de datos.
+        </p>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-6">
+        <h3>4.8 Ejemplos</h3>
+        <p class="mt-3">
+          Dentro del fascinante mundo del desarrollo de software, la sección de "Ejemplos" nos permite adentrarnos en la
+          aplicación práctica de conceptos teóricos en situaciones reales. En este módulo, exploraremos ejemplos
+          concretos utilizando Python y Flask, dos herramientas fundamentales en el desarrollo web.
+
+          En el contexto de "Creando el Modelo en MVC", analizaremos cómo estos conceptos se implementan en la práctica.
+          A través de la ejecución de código real, observaremos la interacción precisa entre el Modelo, la Vista y el
+          Controlador, desentrañando cómo estas partes se entrelazan para formar la estructura sólida de nuestras
+          aplicaciones.
+
+          Los ejemplos que se presentan a continuación servirán como una guía clara para entender cómo el MVC se
+          manifiesta en proyectos reales. Veremos cómo cada componente del patrón colabora para crear aplicaciones
+          funcionales, y cómo la teoría que hemos aprendido se convierte en una realidad palpable en el desarrollo.
+
+          ¡Acompáñanos en este recorrido práctico y descubre cómo Python y Flask pueden ser aliados poderosos en la
+          creación de aplicaciones web robustas y bien estructuradas bajo el paradigma MVC!
+        </p>
+      </div>
+      <div class="col-6">
+        <ul class="example_list">
+          <li>
+            <a routerLink="/configuracionIDE/ejemplo1">
+              Ejemplo 1: Encontrar Números Primos
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Ejemplo 2: Juego de Ahorcado
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Ejemplo 3: Aplicación de Reproductor de Música
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-6">
+        <ul class="example_list">
+          <li>
+            <a routerLink="/introduccionMVC/ejercicio1">Ejercicio 1: Sistema de Gestión de Tareas</a>
+          </li>
+          <li>
+            <a href="#">Ejercicio 2: Nombre del ejercicio</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-6">
+        <h3>4.9 Ejercicios</h3>
+        <p class="mt-3">
+          Después de haber navegado por las aguas teóricas del patrón Modelo-Vista-Controlador en el módulo "Creando el
+          Modelo en MVC", es momento de zarpar hacia la práctica. Los conceptos, por muy claros que sean en la teoría,
+          alcanzan su verdadero valor cuando los ponemos a prueba en situaciones reales. Esta sección de "Ejercicios" ha
+          sido diseñada específicamente para ofrecerte ese reto.
+
+          Aquí, te enfrentarás a una serie de desafíos prácticos que te motivarán a aplicar lo que has aprendido sobre
+          el MVC. Desde la creación de pequeños fragmentos de código hasta la construcción de componentes sencillos,
+          estos ejercicios te empujarán a pensar, diseñar y desarrollar utilizando el patrón MVC.
+
+          Más allá de simplemente escribir código, se te invitará a tomar decisiones cruciales, a enfrentar problemas
+          comunes en el desarrollo, y a idear soluciones que demuestren una comprensión sólida del MVC. ¡Prepárate para
+          poner en acción todo lo aprendido y fortalecer tus habilidades en el desarrollo de aplicaciones robustas y
+          bien estructuradas!
+        </p>
       </div>
     </div>
   </div>
