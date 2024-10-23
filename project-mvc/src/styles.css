@@ -179,3 +179,41 @@ main {
   padding: 20px;
   border-radius: 10px;
 }
+
+.exercise-title {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
+}
+
+
+.exercises-list-items {
+  list-style-type: none;
+  padding: 0;
+  margin: 1.8rem 0px;
+}
+
+.exercises-list-items li {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.exercises-list-items li:hover {
+  background-color: #e0e0e0;
+}
+
+.exercises-list-items li strong {
+  color: #333;
+  font-weight: 600;
+}

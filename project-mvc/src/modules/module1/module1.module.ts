@@ -6,6 +6,9 @@ import { RouterModule } from '@angular/router';
 import { module1PageRoutes } from './module1-app-routing.module';
 import { Ejemplo1Component } from './pages/ejemplo1/ejemplo1.component';
 import { Ejemplo2Component } from './pages/ejemplo2/ejemplo2.component';
+import { Ejemplo3Component } from './pages/ejemplo3/ejemplo3.component';
+import { Ejercicio1Component } from './pages/ejercicio1/ejercicio1.component';
+import { Ejercicio2Component } from './pages/ejercicio2/ejercicio2.component';
 
 
 
@@ -13,7 +16,10 @@ import { Ejemplo2Component } from './pages/ejemplo2/ejemplo2.component';
   declarations: [
     MainComponent,
     Ejemplo1Component,
-    Ejemplo2Component
+    Ejemplo2Component,
+    Ejemplo3Component,
+    Ejercicio1Component,
+    Ejercicio2Component,
   ],
   imports: [
     CommonModule,
