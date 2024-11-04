@@ -26,41 +26,26 @@ export class Ejemplo1Component implements OnInit{
 
   // Variables de código 1
   code = `from flask_sqlalchemy import SQLAlchemy
-  db = SQLAlchemy()
-  class Hotel(db.Model):
-      id = db.Column(db.Integer, primary_key=True)
-      nombre = db.Column(db.String(100), nullable=False)
-      ubicacion = db.Column(db.String(100), nullable=False)
-      habitaciones_disponibles = db.Column(db.Integer, nullable=False)
-  class Reserva(db.Model):
-      id = db.Column(db.Integer, primary_key=True)
-      hotel_id = db.Column(db.Integer, db.ForeignKey('hotel.id'), nullable=False)
-      huesped = db.Column(db.String(100), nullable=False)
-      fecha_inicio = db.Column(db.Date, nullable=False)
-      fecha_fin = db.Column(db.Date, nullable=False)
+db = SQLAlchemy()
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    def __repr__(self):
+        return f'<Post {self.title}>'
   `
-  max_line = 13
+  max_line = 8
   explain: string[] = [
-    'Esta línea importa el objeto SQLAlchemy desde el paquete flask_sqlalchemy. SQLAlchemy es un ORM (Object-Relational Mapper) para Python, y Flask-SQLAlchemy proporciona herramientas útiles para integrar SQLAlchemy con Flask.',
-    'Aquí estamos creando una instancia de SQLAlchemy, que será el punto central para trabajar con bases de datos a través de SQLAlchemy en nuestra aplicación Flask.',
-    'Estamos definiendo una clase Hotel que hereda de db.Model. Esto nos permite tratar las instancias de esta clase como registros de una tabla Hotel en la base de datos.',
-    'Esto define una columna id en la tabla Hotel. Es una columna de enteros y actúa como la clave primaria, lo que significa que cada valor en esta columna debe ser único.',
-    'Esto define una columna nombre en la tabla Hotel, que almacenará el nombre del hotel. La columna es de tipo string con una longitud máxima de 100 caracteres. nullable=False indica que cada registro (fila) en la tabla debe tener un valor para esta columna.',
-    'Similar a la columna nombre, esto define una columna ubicacion que almacenará la ubicación del hotel.',
-    'Esto define una columna para almacenar el número de habitaciones disponibles en el hotel. Es de tipo entero y es obligatorio (no puede ser nulo).',
-    'Estamos definiendo una segunda clase, Reserva, que también hereda de db.Model. Representará una tabla Reserva en la base de datos.',
-    'Similar a la clase Hotel, definimos una columna id que actúa como la clave primaria.',
-    'Aquí, estamos definiendo una columna hotel_id que almacenará la clave foránea. Esta columna se refiere a la columna id de la tabla Hotel, estableciendo así una relación entre las dos tablas. Esto significa que cada reserva estará asociada con un hotel específico.',
-    'Esta columna almacena el nombre del huésped que hizo la reserva.',
-    'Esta columna almacena la fecha de inicio de la reserva.',
-    'Finalmente, esta columna almacena la fecha de finalización de la reserva.',
+    'Importa la clase SQLAlchemy desde la extensión flask_sqlalchemy. Esta clase es la que nos permite trabajar con bases de datos en Flask utilizando SQLAlchemy, un ORM (Object Relational Mapper) que nos permite interactuar con la base de datos mediante objetos de Python en lugar de usar consultas SQL manuales.',
+    'Se crea una instancia de la clase SQLAlchemy llamada db. Esta instancia gestionará la conexión a la base de datos y las operaciones que se realicen sobre ella. Al estar en el nivel global, será utilizada en toda la aplicación.',
+    'Define una clase Post que hereda de db.Model, lo que indica que es un modelo de base de datos. Cada clase que herede de db.Model representa una tabla en la base de datos. En este caso, la clase Post será la tabla que almacenará las publicaciones del blog.',
+    'Define una columna llamada id en la tabla de la base de datos, de tipo Integer (número entero). La propiedad primary_key=True indica que esta columna es la clave primaria, es decir, que cada fila de la tabla será identificada de manera única por el valor de id. SQLAlchemy asignará automáticamente un valor único para esta columna en cada nuevo registro.',
+    'Define una columna llamada title de tipo String con un máximo de 100 caracteres. Esta columna almacenará el título de la publicación del blog. La opción nullable=False significa que esta columna no puede ser nula, es decir, que cada registro en la tabla debe tener un valor para title.',
+    'Define una columna llamada content de tipo Text. Esta columna almacenará el contenido de la publicación. Al igual que con el título, nullable=False significa que esta columna no puede ser nula, por lo que cada publicación debe tener contenido.',
+    'Define el método especial __repr__, que es utilizado para proporcionar una representación legible en consola o depuración de los objetos de la clase Post. Esto es útil cuando queremos ver una versión más descriptiva del objeto cuando imprimimos o inspeccionamos una instancia de Post.',
+    'Este método devuelve una cadena que representa al objeto Post, mostrando su título. Esto será lo que se verá cuando se imprima una instancia de Post o cuando se use en una sesión interactiva.'
   ];
   lines: string[] = [
-    "",
-    "db = SQLAlchemy()",
-    "",
-    "",
-    "",
     "",
     "",
     "",
@@ -73,45 +58,57 @@ export class Ejemplo1Component implements OnInit{
 
 
   // Variables de código 2
-  code2 = `<h1>{{ hotel.nombre }}</h1>
-  <p>Ubicación: {{ hotel.ubicacion }}</p>
-  <p>Habitaciones Disponibles: {{ hotel.habitaciones_disponibles }}</p>
+  code2 = `<h1>Create a New Blog Post</h1>
+<form action="/create" method="POST">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required><br><br>
+    <label for="content">Content:</label><br>
+    <textarea id="content" name="content" rows="10" cols="30" required></textarea><br><br>
+    <button type="submit">Create Post</button>
+</form>
+<a href="/posts">View all posts</a>
   `
 
   // Variables de código 3
-  code3 = `<h1>Confirmación de Reserva</h1>
-  <p>Huésped: {{ reserva.huesped }}</p>
-  <p>Hotel: {{ reserva.hotel.nombre }}</p>
-  <p>Desde: {{ reserva.fecha_inicio }} Hasta: {{ reserva.fecha_fin }}</p>
-  `
+  code3 = `<h1>All Blog Posts</h1>
+<ul>
+    {% for post in posts %}
+    <li>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content }}</p>
+    </li>
+    {% endfor %}
+</ul>
+<a href="/create">Create a new post</a>`
 
   // Variables de código 4
   code4 = `from flask import Flask, render_template, request, redirect, url_for
-  from modelos import db, Hotel, Reserva
-  app = Flask(__name__)
-  app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hoteles.db'
-  db.init_app(app)
-  @app.route('/hotel/<int:hotel_id>')
-  def hotel_detalle(hotel_id):
-      hotel = Hotel.query.get(hotel_id)
-      return render_template('hotel.html', hotel=hotel)
-  @app.route('/reserva/<int:hotel_id>', methods=['POST'])
-  def reserva_hotel(hotel_id):
-      hotel = Hotel.query.get(hotel_id)
-      if hotel.habitaciones_disponibles > 0:
-          huésped = request.form['nombre_huesped']
-          fecha_inicio = request.form['fecha_inicio']
-          fecha_fin = request.form['fecha_fin']
-          reserva = Reserva(hotel_id=hotel_id, huésped=huésped, fecha_inicio=fecha_inicio, fecha_fin=fecha_fin)
-          db.session.add(reserva)
-          hotel.habitaciones_disponibles -= 1
-          db.session.commit()
-          return render_template('reserva.html', reserva=reserva)
-      else:
-          return "No hay habitaciones disponibles."
-  if __name__ == '__main__':
-      app.run()
-  `
+from model import db, Post
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db.init_app(app)
+@app.route('/')
+def index():
+    return redirect(url_for('show_posts'))
+@app.route('/create', methods=['GET', 'POST'])
+def create_post():
+    if request.method == 'POST':
+        title = request.form['title']
+        content = request.form['content']
+        new_post = Post(title=title, content=content)
+        db.session.add(new_post)
+        db.session.commit()
+        return redirect(url_for('show_posts'))
+    return render_template('create_post.html')
+@app.route('/posts')
+def show_posts():
+    posts = Post.query.all()
+    return render_template('posts.html', posts=posts)
+if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
+    app.run(debug=True)`
 
   // Funciones
   reset_vars_code2 = () => {
@@ -123,11 +120,17 @@ export class Ejemplo1Component implements OnInit{
     this.top = 16;
     this.explain_txt = '';
     // ----------------------------------------------
-    this.max_line = 3
+    this.max_line = 9
     this.explain = [
-      'Esta línea muestra el nombre del hotel dentro de un elemento h1 (encabezado 1). El texto entre las llaves dobles {{ hotel.nombre }} es una expresión que recupera y muestra el valor de la propiedad nombre del objeto hotel',
-      'Aquí se muestra la ubicación del hotel dentro de un párrafo (<p>). Similar al caso anterior, {{ hotel.ubicacion }} muestra el valor de la propiedad ubicacion del objeto hotel.',
-      'En esta línea, se muestra la cantidad de habitaciones disponibles en el hotel. Nuevamente, {{ hotel.habitaciones_disponibles }} muestra el valor de la propiedad habitaciones_disponibles del objeto hotel.',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      ''
     ];
     this.lines = [
       'hotel es la variable que representa al modelo y nombre es el atributo del modelo que deseamos mostrar',
@@ -147,7 +150,7 @@ export class Ejemplo1Component implements OnInit{
     this.top = 16;
     this.explain_txt = '';
     // ----------------------------------------------
-    this.max_line = 4
+    this.max_line = 10
     this.explain = [
       'Se imprime un título de nivel 1 mostrando el mensaje "Confirmación de Reserva".',
       'Se muestra un párrafo con el texto "Huésped:", seguido del nombre del huesped obtenido de la variable reserva.huesped.',
@@ -173,7 +176,7 @@ export class Ejemplo1Component implements OnInit{
     this.top = 16;
     this.explain_txt = '';
     // ----------------------------------------------
-    this.max_line = 25
+    this.max_line = 27
     this.explain = [
       'Importa las funciones necesarias de Flask para crear la aplicación web y manejar las plantillas, solicitudes y redireccionamientos.',
       'Importa la base de datos (db) y los modelos (Hotel y Reserva) desde el módulo modelos.',

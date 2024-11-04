@@ -8,7 +8,7 @@ import { VariablesGlobalesService } from 'src/modules/shared/services/variables-
   templateUrl: './ejercicio1.component.html',
   styleUrls: ['./ejercicio1.component.css']
 })
-export class Ejercicio1Component {
+export class Ejercicio1Component implements OnInit{
   textBackModule:string = ''
   uriBack: string = '/introduccion_patron_diseno_mvc/main'
 
