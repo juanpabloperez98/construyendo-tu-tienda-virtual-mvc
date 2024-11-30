@@ -12,22 +12,22 @@ export class MainPageComponent implements OnInit{
 
   public modules: Module[] = [
     {
-      imgSrc: './assets/home/module1.png',
-      imgAlt: 'module1.png',
+      imgSrc: './assets/home/module1.jpg',
+      imgAlt: 'module1.jpg',
       title: '1. Introducción al patrón de diseño MVC',
       description: 'Bienvenido al primer módulo de nuestro viaje en "Construyendo Tu Tienda Virtual: Una Experiencia Práctica con el Modelo MVC". En esta etapa inicial, nos sumergiremos en el corazón del patrón Modelo-Vista-Controlador, un enfoque revolucionario que ha redefinido cómo desarrollamos aplicaciones efectivas y eficientes.',
       routerLink: '/introduccion_patron_diseno_mvc/main'
     },
     {
-      imgSrc: './assets/ide/main.jfif',
-      imgAlt: 'main.jfif',
+      imgSrc: './assets/ide/main.jpg',
+      imgAlt: 'main.jpg',
       title: '2. Configurando el entorno de desarrollo',
       description: 'Tras adentrarte en los fundamentos del patrón MVC, es hora de dar un paso esencial: preparar tu espacio de trabajo. En este segundo módulo, nos centraremos en configurar el entorno de desarrollo, asegurándonos de que dispongas de todas las herramientas y recursos necesarios para construir, probar y desplegar tu tienda virtual con eficiencia.',
       routerLink: '/configuracion-ide/main'
     },
     {
-      imgSrc: './assets/bd/main.png',
-      imgAlt: 'main.png',
+      imgSrc: './assets/bd/main.jpg',
+      imgAlt: 'main.jpg',
       title: '3. Diseño de bases de datos para la tienda virtual',
       description: 'Ahora que tu entorno de desarrollo está listo, nos sumergiremos en uno de los aspectos más cruciales de cualquier aplicación o sistema: la base de datos. En este tercer módulo, abordaremos el diseño y la estructura que soportará nuestra tienda virtual, garantizando que podamos almacenar, recuperar y gestionar datos de manera eficiente y efectiva.',
       routerLink: '/databases/main'

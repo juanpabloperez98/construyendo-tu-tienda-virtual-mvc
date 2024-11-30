@@ -5,7 +5,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HighlightService } from './services/highlight.service';
 import { VariablesGlobalesService } from './services/variables-globales.service';
 import { ReturnComponent } from './return/return.component';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import { ReturnComponent } from './return/return.component';
     ReturnComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   providers: [
     HighlightService,

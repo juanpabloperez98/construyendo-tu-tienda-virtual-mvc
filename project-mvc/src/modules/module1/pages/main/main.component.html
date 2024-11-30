@@ -1,10 +1,7 @@
 <app-header></app-header>
 <div class="standard-max-width">
   <div class="content-main">
-    <app-return
-      [next]="true"
-      [textNext]="textNext"
-    ></app-return>
+    <app-return [next]="true" [textNext]="textNext"></app-return>
     <hr>
     <div class="row">
       <div class="col-6">
@@ -32,22 +29,41 @@
         </ul>
       </div>
       <div class="col-6 content-img">
-        <img src="./assets/introduction/mvc1.png" alt="mvc1.png">
-        <img src="./assets/introduction/mvc2.png" alt="mvc2.png">
+        <img src="./assets/introduction/mvc1.jpg" alt="mvc1.jpg">
+        <!-- <img src="./assets/introduction/mvc2.jpg" alt="mvc2.jpg"> -->
       </div>
     </div>
     <hr>
     <div class="row mt-5">
-      <div class="col-12">
+      <div class="col-6 content-img">
+        <img src="./assets/introduction/mvc2.jpg" alt="mvc2.jpg">
+      </div>
+      <div class="col-6">
         <h3>1.2 ¿Qué es el patrón MVC?</h3>
         <p class="mt-2">
-          <span>MVC</span> es el acrónimo de Modelo-Vista-Controlador, y es un patrón de diseño ampliamente utilizado en
-          el desarrollo
-          de software, particularmente en aplicaciones web y móviles. Su principal objetivo es separar la lógica de la
-          aplicación en tres componentes interconectados. Esto facilita la modularidad, permite un desarrollo más ágil y
-          hace que el código sea más fácil de mantener y escalar.
+          El patrón de diseño Modelo-Vista-Controlador (MVC) es una arquitectura ampliamente utilizada en el desarrollo
+          de software, especialmente en aplicaciones web y móviles. Su principal objetivo es dividir el código de la
+          aplicación en tres componentes interconectados pero con responsabilidades claramente definidas: el Modelo, la
+          Vista y el Controlador. Esta separación facilita la modularidad, mejora el desarrollo colaborativo y hace que
+          el código sea más fácil de mantener y escalar.
+
+          <br>
+          <br>
+
+          <strong>El Modelo</strong> maneja la lógica de negocios y los datos, interactuando con bases de datos o fuentes externas para
+          consultar, modificar o eliminar información. En una aplicación de comercio electrónico, podría incluir clases
+          como Producto, Usuario o Pedido.
+
+          <br>
+          <strong>La Vista</strong> es la interfaz de usuario, encargada de mostrar los datos y capturar interacciones. Se compone de
+          HTML, CSS y scripts que presentan la información de manera visual y amigable.
+
+          <br>
+          <strong>El Controlador</strong> actúa como intermediario entre la Vista y el Modelo. Procesa las acciones del usuario,
+          interactúa con el modelo para obtener o modificar datos y actualiza la vista con la información
         </p>
       </div>
+
       <div class="col-lg-4">
         <h3>Modelo (Model)</h3>
         <hr>
@@ -208,8 +224,8 @@
           entender cómo la información y las responsabilidades se mueven entre el Modelo, la Vista y el Controlador.
         </p>
       </div>
-      <div class="col-lg-6 text-center">
-        <img style="width: 400px;" src="./assets/introduction/mvc.png" alt="mvc.png">
+      <div class="col-lg-6 mb-3 text-center">
+        <img id="mvc-img" src="./assets/introduction/mvc.jpg" alt="mvc.jpg">
       </div>
       <div class="col-4">
         <p>
@@ -297,7 +313,7 @@
             </a>
           </li>
           <li>
-            <a>
+            <a routerLink="/introduccion_patron_diseno_mvc/ejemplo-2">
               Ejemplo 3: Aplicación de Clima en Tiempo Real
             </a>
           </li>
@@ -306,7 +322,8 @@
       <div class="col-6">
         <ul class="example_list">
           <li>
-            <a routerLink="/introduccion_patron_diseno_mvc/ejercicio-1">Ejercicio 1: Crear una Calculadora Simple usando MVC</a>
+            <a routerLink="/introduccion_patron_diseno_mvc/ejercicio-1">Ejercicio 1: Crear una Calculadora Simple usando
+              MVC</a>
           </li>
           <li>
             <a routerLink="/introduccion_patron_diseno_mvc/ejercicio-2">Ejercicio 2: Aplicación de Notas Rápidas</a>

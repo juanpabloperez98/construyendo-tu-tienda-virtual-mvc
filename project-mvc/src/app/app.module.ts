@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 // Components
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Services
 
@@ -20,6 +21,7 @@ import { AppRoutes } from './app-routing.module';
     RouterModule.forRoot(AppRoutes,{
       scrollPositionRestoration: 'top',
     }),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

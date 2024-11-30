@@ -1,7 +1,7 @@
 :root {
-  --primary-color: #00A8E8;
-  --secondary-color: #436575;
-  --third-color: #FF6F61;
+  --primary-color: #2A2E5E;
+  --secondary-color: #1A75A4;
+  --third-color: #52B8A2;
   --fourth-color: #FFD700;
   --five-color: #FAFAFA;
 
@@ -32,13 +32,12 @@ main {
 }
 
 .card-body>.btn {
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   color: white;
 }
 
 .card-body>.btn:hover {
   font-size: 18px;
-  color: var(--secondary-color);
 }
 
 .example_list {
@@ -50,10 +49,14 @@ main {
   font-size: 20px;
   border: 1px solid black;
   padding: 10px;
-  background-color: var(--secondary-color); /* Asegúrate de definir esta variable en tu CSS */
+  background-color: var(--primary-color);
   margin-top: 20px;
   cursor: pointer;
   border-radius: 20px;
+}
+
+.example_list li:hover {
+  background-color: var(--secondary-color);
 }
 
 .example_list li a {
@@ -129,7 +132,7 @@ main {
 }
 
 .content-main .content-img img {
-  width: 300px;
+  width: 100%;
   margin-top: 50px;
 }
 
@@ -217,3 +220,6 @@ main {
   color: #333;
   font-weight: 600;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { VariablesGlobalesService } from '../services/variables-globales.service';
 
 @Component({
   selector: 'app-return',
@@ -23,12 +22,8 @@ export class ReturnComponent implements OnInit{
   public iconoSeguir:string = '';
 
   constructor(
-    private variablesglobalesservice: VariablesGlobalesService
   ){ }
 
-  ngOnInit(): void {
-    this.iconoVolver = this.variablesglobalesservice.iconoVolver;
-    this.iconoSeguir = this.variablesglobalesservice.iconoSeguir;
-  }
+  ngOnInit(): void {}
 
 }
