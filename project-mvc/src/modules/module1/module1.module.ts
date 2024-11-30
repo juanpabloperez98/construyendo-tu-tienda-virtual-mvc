@@ -9,7 +9,8 @@ import { Ejemplo2Component } from './pages/ejemplo2/ejemplo2.component';
 import { Ejemplo3Component } from './pages/ejemplo3/ejemplo3.component';
 import { Ejercicio1Component } from './pages/ejercicio1/ejercicio1.component';
 import { Ejercicio2Component } from './pages/ejercicio2/ejercicio2.component';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import { Ejercicio2Component } from './pages/ejercicio2/ejercicio2.component';
   imports: [
     CommonModule,
     RouterModule.forChild(module1PageRoutes),
-    SharedModule
+    SharedModule,
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class Module1Module { }

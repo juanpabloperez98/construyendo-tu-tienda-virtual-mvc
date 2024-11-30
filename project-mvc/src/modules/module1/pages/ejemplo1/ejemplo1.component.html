@@ -43,8 +43,12 @@
             <a class="btn-default" (click)="onStart()">Empezar</a>
           </div>
           <div class="text-center"[ngClass]="{'no-display': !start && finish}">
-            <a (click)="back()" class="btn-default"><</a>
-            <a (click)="next()" class="btn-default ms-1">></a>
+            <a (click)="back()" class="btn-default">
+              <mat-icon>arrow_back</mat-icon>
+            </a>
+            <a (click)="next()" class="btn-default ms-1">
+              <mat-icon>arrow_forward</mat-icon>
+            </a>
           </div>
           <div class="text-center mt-5" [ngClass]="{'no-display': finish}">
             <a (click)="showView(1)" class="btn-default">Siguiente ></a>
@@ -53,7 +57,7 @@
       </div>
       <div class="row mt-5" *ngIf="show2">
         <div class="col-6">
-          <h4 class="mb-3">Vista1 (hotel.html)</h4>
+          <h4 class="mb-3">Vista1 (create.html)</h4>
           <pre class="language-language-markup line-numbers">
             <code class="language-html">{{ code2 }}
             </code>
@@ -77,8 +81,12 @@
             <a class="btn-default" (click)="onStart()">Empezar</a>
           </div>
           <div class="text-center"[ngClass]="{'no-display': !start && finish}">
-            <a (click)="back()" class="btn-default"><</a>
-            <a (click)="next()" class="btn-default ms-1">></a>
+            <a (click)="back()" class="btn-default">
+              <mat-icon>arrow_back</mat-icon>
+            </a>
+            <a (click)="next()" class="btn-default ms-1">
+              <mat-icon>arrow_forward</mat-icon>
+            </a>
           </div>
           <div class="text-center mt-5" [ngClass]="{'no-display': finish}">
             <a (click)="showView(2)" class="btn-default">Ver vista 2</a>
@@ -87,7 +95,7 @@
       </div>
       <div class="row mt-5" *ngIf="show3">
         <div class="col-6">
-          <h4 class="mb-3">Vista2 (reserva.html)</h4>
+          <h4 class="mb-3">Vista2 (show.html)</h4>
           <pre class="language-language-markup line-numbers">
             <code class="language-html">{{ code3 }}
             </code>
@@ -111,8 +119,12 @@
             <a class="btn-default" (click)="onStart()">Empezar</a>
           </div>
           <div class="text-center"[ngClass]="{'no-display': !start && finish}">
-            <a (click)="back()" class="btn-default"><</a>
-            <a (click)="next()" class="btn-default ms-1">></a>
+            <a (click)="back()" *ngIf="allow_back" class="btn-default">
+              <mat-icon>arrow_back</mat-icon>
+            </a>
+            <a (click)="next()" class="btn-default ms-1">
+              <mat-icon>arrow_forward</mat-icon>
+            </a>
           </div>
           <div class="text-center mt-5" [ngClass]="{'no-display': finish}">
             <a (click)="showView(3)" class="btn-default">Ver controlador</a>
@@ -145,8 +157,12 @@
             <a class="btn-default" (click)="onStart()">Empezar</a>
           </div>
           <div class="text-center"[ngClass]="{'no-display': !start && finish}">
-            <a (click)="back()" class="btn-default"><</a>
-            <a (click)="next()" class="btn-default ms-1">></a>
+            <a (click)="back()" class="btn-default">
+              <mat-icon>arrow_back</mat-icon>
+            </a>
+            <a (click)="next()" class="btn-default ms-1">
+              <mat-icon>arrow_forward</mat-icon>
+            </a>
           </div>
           <div class="text-center mt-5" [ngClass]="{'no-display': finish}">
             <a class="btn-default">Volver a ejecutar</a>
