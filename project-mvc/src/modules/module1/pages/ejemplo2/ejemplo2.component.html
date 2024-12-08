@@ -9,14 +9,16 @@
     <div class="row">
       <div class="col-12 content-title">
         <h3>
-          Sistema de Gestión de Biblioteca
+          Sistema de Gestión de Productos
         </h3>
         <p>
-          En este ejemplo, vamos a explorar cómo se puede diseñar un Sistema de Gestión de Biblioteca básico utilizando el patrón Modelo-Vista-Controlador (MVC). A través de este ejercicio,
-          descubriremos cómo se puede gestionar la información de los libros,
-          cómo se procesan los préstamos y devoluciones,
-          y cómo se presenta la información al usuario,
-          todo ello siguiendo el flujo cohesivo y estructurado que proporciona el MVC.
+          En este ejemplo, vamos a construir la funcionalidad de gestionar productos en una aplicación web.
+          Implementaremos un sistema que permitirá listar todos los productos disponibles y
+          agregar nuevos productos con detalles como nombre, precio y descripción.
+          <br>
+          Utilizaremos el patrón de diseño Modelo-Vista-Controlador (MVC) para estructurar el código,
+          asegurando una separación clara de responsabilidades y facilitando el mantenimiento y la extensibilidad
+          de la aplicación. ¡Manos a la obra!
         </p>
       </div>
       <div class="row mt-5" *ngIf="show1">
@@ -45,8 +47,12 @@
             <a class="btn-default" (click)="onStart()">Empezar</a>
           </div>
           <div class="text-center"[ngClass]="{'no-display': !start && finish}">
-            <a (click)="back()" class="btn-default"><</a>
-            <a (click)="next()" class="btn-default ms-1">></a>
+            <a (click)="back()" class="btn-default">
+              <mat-icon>arrow_back</mat-icon>
+            </a>
+            <a (click)="next()" class="btn-default ms-1">
+              <mat-icon>arrow_forward</mat-icon>
+            </a>
           </div>
           <div class="text-center mt-5" [ngClass]="{'no-display': finish}">
             <a (click)="showView(1)" class="btn-default">Siguiente ></a>
@@ -79,8 +85,12 @@
             <a class="btn-default" (click)="onStart()">Empezar</a>
           </div>
           <div class="text-center"[ngClass]="{'no-display': !start && finish}">
-            <a (click)="back()" class="btn-default"><</a>
-            <a (click)="next()" class="btn-default ms-1">></a>
+            <a (click)="back()" *ngIf="allow_back" class="btn-default">
+              <mat-icon>arrow_back</mat-icon>
+            </a>
+            <a (click)="next()" class="btn-default ms-1">
+              <mat-icon>arrow_forward</mat-icon>
+            </a>
           </div>
           <div class="text-center mt-5" [ngClass]="{'no-display': finish}">
             <a (click)="showView(2)" class="btn-default">Ver vista 2</a>
@@ -113,8 +123,12 @@
             <a class="btn-default" (click)="onStart()">Empezar</a>
           </div>
           <div class="text-center"[ngClass]="{'no-display': !start && finish}">
-            <a (click)="back()" class="btn-default"><</a>
-            <a (click)="next()" class="btn-default ms-1">></a>
+            <a (click)="back()" class="btn-default">
+              <mat-icon>arrow_back</mat-icon>
+            </a>
+            <a (click)="next()" class="btn-default ms-1">
+              <mat-icon>arrow_forward</mat-icon>
+            </a>
           </div>
           <div class="text-center mt-5" [ngClass]="{'no-display': finish}">
             <a (click)="showView(3)" class="btn-default">Ver controlador</a>
@@ -147,8 +161,12 @@
             <a class="btn-default" (click)="onStart()">Empezar</a>
           </div>
           <div class="text-center"[ngClass]="{'no-display': !start && finish}">
-            <a (click)="back()" class="btn-default"><</a>
-            <a (click)="next()" class="btn-default ms-1">></a>
+            <a (click)="back()" class="btn-default">
+              <mat-icon>arrow_back</mat-icon>
+            </a>
+            <a (click)="next()" class="btn-default ms-1">
+              <mat-icon>arrow_forward</mat-icon>
+            </a>
           </div>
           <div class="text-center mt-5" [ngClass]="{'no-display': finish}">
             <a class="btn-default">Volver a ejecutar</a>

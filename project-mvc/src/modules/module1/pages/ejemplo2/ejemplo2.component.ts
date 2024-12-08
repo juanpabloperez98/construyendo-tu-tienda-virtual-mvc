@@ -7,7 +7,7 @@ import { VariablesGlobalesService } from 'src/modules/shared/services/variables-
   templateUrl: './ejemplo2.component.html',
   styleUrls: ['./ejemplo2.component.css']
 })
-export class Ejemplo2Component implements OnInit{
+export class Ejemplo2Component implements OnInit {
 
 
   // Variables 1
@@ -23,23 +23,26 @@ export class Ejemplo2Component implements OnInit{
   show2: boolean = false;
   show3: boolean = false;
   show4: boolean = false;
+  iter: number = 0;
+  allow_back: boolean = true;
 
   // Modelo
   code = `from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
-class Book(db.Model):
+class Producto(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    author = db.Column(db.String(100), nullable=False)
-  `
-  max_line = 6
+    nombre = db.Column(db.String(100), nullable=False)
+    precio = db.Column(db.Float, nullable=False)
+    descripcion = db.Column(db.String(255), nullable=True)`
+  max_line = 7
   explain: string[] = [
-    'Se importa la clase SQLAlchemy desde el paquete flask_sqlalchemy. Esta clase proporciona una interfaz para interactuar con bases de datos utilizando el ORM (Object Relational Mapper) de SQLAlchemy dentro de una aplicación Flask.',
-    'Se crea una instancia de SQLAlchemy y se asigna a la variable db. Esta instancia se utilizará para configurar y gestionar la conexión a la base de datos y las operaciones relacionadas con los modelos de datos.',
-    'Se define una clase llamada Book que hereda de db.Model. Esto convierte a Book en un modelo de SQLAlchemy, que representa una tabla en la base de datos.',
-    'Se define un campo llamado id utilizando db.Column. Este campo es de tipo Integer y actúa como la clave primaria de la tabla. La clave primaria (primary_key=True) asegura que cada registro en la tabla Book sea único y se pueda identificar de manera exclusiva.',
-    'Se define un campo llamado title que es de tipo String con una longitud máxima de 100 caracteres. La opción nullable=False indica que este campo es obligatorio y no puede ser nulo en la base de datos.',
-    'Se define un campo llamado author que es de tipo String con una longitud máxima de 100 caracteres. Al igual que el campo title, nullable=False indica que este campo es obligatorio y no puede ser nulo en la base de datos.'
+    'Importa la clase SQLAlchemy del módulo flask_sqlalchemy, que es una extensión de Flask para interactuar con bases de datos utilizando el patrón ORM (Object-Relational Mapping). Permite trabajar con bases de datos mediante objetos y clases en lugar de consultas SQL directas.',
+    'Crea una instancia de la clase SQLAlchemy, que será utilizada para configurar y manejar la conexión a la base de datos. Esta instancia actúa como puente entre la aplicación Flask y la base de datos.',
+    'Define una clase llamada Producto, que hereda de db.Model. Esto indica que Producto es un modelo de datos, es decir, una representación en Python de una tabla en la base de datos.',
+    'Declara un atributo llamado id que corresponde a una columna en la tabla. El tipo de dato es Integer, y está marcado como primary_key=True, lo que significa que será la clave primaria de la tabla y su valor será único para cada registro.',
+    'Declara un atributo llamado nombre que corresponde a una columna en la tabla. El tipo de dato es String con un tamaño máximo de 100 caracteres. El argumento nullable=False indica que esta columna no puede tener valores nulos, es decir, siempre debe tener un valor asignado.',
+    'Declara un atributo llamado precio que corresponde a una columna en la tabla. El tipo de dato es Float (número decimal). El argumento nullable=False indica que esta columna no puede ser nula, por lo que es obligatorio asignarle un valor.',
+    'Declara un atributo llamado descripcion que corresponde a una columna en la tabla. El tipo de dato es String con un tamaño máximo de 255 caracteres. El argumento nullable=True indica que esta columna puede ser nula, es decir, es opcional asignarle un valor.',
   ];
   lines: string[] = [
     "",
@@ -57,52 +60,46 @@ class Book(db.Model):
 <ul>
     {% for book in books %}
         <li>{{ book.title }} by {{ book.author }}
-            <a href="{{ url_for('delete_book', id=book.id) }}">Eliminar</a>
         </li>
     {% endfor %}
 </ul>
   `
 
   // Vistas
-  code3 = `<h1>Añadir Nuevo Libro</h1>
-<form method="POST">
-    <label for="title">Título:</label>
-    <input type="text" id="title" name="title" required>
-    <br>
-    <label for="author">Autor:</label>
-    <input type="text" id="author" name="author" required>
-    <br>
-    <button type="submit">Añadir Libro</button>
+  code3 = `<h2>Agregar Producto</h2>
+<form method="POST" action="/agregar_producto">
+    <label>Nombre:</label>
+    <input type="text" name="nombre" required>
+    <label>Precio:</label>
+    <input type="number" step="0.01" name="precio" required>
+    <label>Descripción:</label>
+    <textarea name="descripcion"></textarea>
+    <button type="submit">Agregar</button>
 </form>
   `
 
   // Controlador
-  code4 = `from flask import Flask, render_template, request, redirect, url_for
-  from modelos import db, Hotel, Reserva
-  app = Flask(__name__)
-  app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hoteles.db'
-  db.init_app(app)
-  @app.route('/hotel/<int:hotel_id>')
-  def hotel_detalle(hotel_id):
-      hotel = Hotel.query.get(hotel_id)
-      return render_template('hotel.html', hotel=hotel)
-  @app.route('/reserva/<int:hotel_id>', methods=['POST'])
-  def reserva_hotel(hotel_id):
-      hotel = Hotel.query.get(hotel_id)
-      if hotel.habitaciones_disponibles > 0:
-          huésped = request.form['nombre_huesped']
-          fecha_inicio = request.form['fecha_inicio']
-          fecha_fin = request.form['fecha_fin']
-          reserva = Reserva(hotel_id=hotel_id, huésped=huésped, fecha_inicio=fecha_inicio, fecha_fin=fecha_fin)
-          db.session.add(reserva)
-          hotel.habitaciones_disponibles -= 1
-          db.session.commit()
-          return render_template('reserva.html', reserva=reserva)
-      else:
-          return "No hay habitaciones disponibles."
-  if __name__ == '__main__':
-      app.run()
-  `
+  code4 = `from flask import Flask, render_template, request, redirect
+from modelos import db, Producto
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///productos.db'
+db.init_app(app)
+@app.route('/')
+def listar_productos():
+    productos = Producto.query.all()
+    return render_template('productos.html', productos=productos)
+@app.route('/agregar_producto', methods=['POST'])
+def agregar_producto():
+    nuevo_producto = Producto(
+        nombre=request.form['nombre'],
+        precio=request.form['precio'],
+        descripcion=request.form.get('descripcion', '')
+    )
+    db.session.add(nuevo_producto)
+    db.session.commit()
+    return redirect('/')
+if __name__ == '__main__':
+    app.run()`
 
   // Funciones
   reset_vars_code2 = () => {
@@ -114,16 +111,26 @@ class Book(db.Model):
     this.top = 16;
     this.explain_txt = '';
     // ----------------------------------------------
-    this.max_line = 3
+    this.max_line = 8
     this.explain = [
-      'Esta línea muestra el nombre del hotel dentro de un elemento h1 (encabezado 1). El texto entre las llaves dobles {{ hotel.nombre }} es una expresión que recupera y muestra el valor de la propiedad nombre del objeto hotel',
-      'Aquí se muestra la ubicación del hotel dentro de un párrafo (<p>). Similar al caso anterior, {{ hotel.ubicacion }} muestra el valor de la propiedad ubicacion del objeto hotel.',
-      'En esta línea, se muestra la cantidad de habitaciones disponibles en el hotel. Nuevamente, {{ hotel.habitaciones_disponibles }} muestra el valor de la propiedad habitaciones_disponibles del objeto hotel.',
+      'Define un encabezado de nivel 1 que muestra el título "Lista de Libros" en la página. Es una etiqueta HTML estándar utilizada para títulos principales.',
+      'Crea un enlace que apunta a la URL generada por la función Flask url_for("add_book"). Esto indica que al hacer clic en el enlace, el navegador redirigirá a la ruta asociada con la función add_book en el servidor. El texto del enlace es "Añadir Nuevo Libro".',
+      'Abre una lista desordenada (<ul> en HTML), que se utiliza para contener elementos de lista (<li>). Aquí se mostrará la lista de libros.',
+      'Inicia un bloque de bucle en Jinja2, que iterará sobre la colección books. Por cada elemento en books, se generará dinámicamente un elemento de la lista. books es una variable pasada desde el controlador Flask al renderizar la plantilla.',
+      'Crea un elemento de lista (<li>) para cada libro en books. Dentro de este elemento, se muestra el título (book.title) seguido del autor (book.author) del libro. Las variables book.title y book.author son atributos de cada objeto en la lista books.',
+      'Cierra el elemento de lista (<li>), finalizando la definición de un libro en la lista.',
+      'Cierra el bucle Jinja2. Esto indica que se han terminado de procesar todos los elementos en la colección books.',
+      'Cierra la lista desordenada (<ul>), indicando que no hay más elementos de lista que agregar.',
     ];
     this.lines = [
-      'hotel es la variable que representa al modelo y nombre es el atributo del modelo que deseamos mostrar',
-      'ubicacion es el atributo de la ubicacion del hotel que deseamos mostrar',
-      'habitaciones_disponibles es el atributo de la el número de habitaciones del hotel disponible que deseamos mostrar',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
     ]
     this.explain_line = '';
   }
@@ -138,18 +145,30 @@ class Book(db.Model):
     this.top = 16;
     this.explain_txt = '';
     // ----------------------------------------------
-    this.max_line = 4
+    this.max_line = 10
     this.explain = [
-      'Se imprime un título de nivel 1 mostrando el mensaje "Confirmación de Reserva".',
-      'Se muestra un párrafo con el texto "Huésped:", seguido del nombre del huesped obtenido de la variable reserva.huesped.',
-      'Se muestra un párrafo con el texto "Hotel:", seguido del nombre del hotel obtenido de la variable reserva.hotel.nombre.',
-      'Se muestra un párrafo con las fechas de inicio y fin de la reserva, obtenidas de las variables reserva.fecha_inicio y reserva.fecha_fin.',
+      'Define un encabezado de nivel 2 que muestra el título "Agregar Producto" en la página. Esto indica que el formulario a continuación está destinado a agregar un producto.',
+      'Abre un formulario HTML que enviará datos al servidor mediante el método HTTP POST. La acción (action) indica que los datos serán enviados a la ruta /agregar_producto en el servidor.',
+      'Crea una etiqueta para el campo de texto donde el usuario introducirá el nombre del producto. El texto "Nombre:" describe el propósito del campo al usuario.',
+      'Crea un campo de entrada de texto para que el usuario escriba el nombre del producto. El atributo name="nombre" define cómo se identificará este dato en el servidor. El atributo required indica que este campo es obligatorio y debe completarse antes de enviar el formulario.',
+      'Crea una etiqueta para el campo de entrada donde el usuario introducirá el precio del producto. El texto "Precio:" describe el propósito del campo.',
+      'Crea un campo de entrada numérico para el precio del producto. El atributo step="0.01" asegura que el usuario pueda ingresar valores con hasta dos decimales. El atributo name="precio" define cómo se identificará este dato en el servidor, y required indica que este campo es obligatorio.',
+      'Crea una etiqueta para el campo de texto donde el usuario puede ingresar una descripción del producto. El texto "Descripción:" describe el propósito del campo.',
+      'Crea un área de texto para que el usuario introduzca una descripción más larga del producto. El atributo name="descripcion" define cómo se identificará este dato en el servidor. A diferencia de un campo de entrada (<input>), un <textarea> permite múltiples líneas de texto.',
+      'Crea un botón para enviar el formulario. El atributo type="submit" indica que al hacer clic en el botón, se enviarán los datos del formulario al servidor según el método y la acción especificados en <form>.',
+      'Cierra el formulario HTML, indicando que no hay más campos o elementos relacionados con el envío de datos.',
     ];
     this.lines = [
       '',
-      'reserva es la variable que representa al modelo de Reserva definido anteriormente, y huesped el atributo que representa al nombre del huesped',
-      'reserva es la variable que representa al modelo de Reserva definido anteriormente, luego se hace el llamado al atributo hotel (siendo este atributo un llamado a la relación que tiene el modelo Reserva con Hotel) y posteriormente se hace el llamado al atributo nombre que es un atributo del Modelo Hotel',
-      'Lo mismo se hace el llamado a los atributos del modelo Reserva, haciendo llamado a la fechas de inicio y la fecha fin',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
     ]
     this.explain_line = '';
   }
@@ -164,67 +183,106 @@ class Book(db.Model):
     this.top = 16;
     this.explain_txt = '';
     // ----------------------------------------------
-    this.max_line = 25
+    this.max_line = 21
     this.explain = [
-      'Importa las funciones necesarias de Flask para crear la aplicación web y manejar las plantillas, solicitudes y redireccionamientos.',
-      'Importa la base de datos (db) y los modelos (Hotel y Reserva) desde el módulo modelos.',
-      'Crea una instancia de la aplicación Flask.',
-      'Configura la URI de la base de datos SQLite para la aplicación Flask.',
-      'Inicializa la base de datos con la aplicación Flask.',
-      'Define una ruta para mostrar los detalles de un hotel específico basado en su ID.',
-      'Define la función para manejar la solicitud de la ruta /hotel/<int:hotel_id>.',
-      'Busca el hotel en la base de datos por su ID.',
-      'Renderiza la plantilla hotel.html con la información del hotel.',
-      'Define una ruta para hacer una reserva en un hotel específico, utilizando el método POST.',
-      'Define la función para manejar la solicitud de la ruta /reserva/<int:hotel_id>.',
-      'Busca el hotel en la base de datos por su ID.',
-      'Comprueba si el hotel tiene habitaciones disponibles.',
-      'Obtiene el nombre del huésped del formulario enviado.',
-      'Obtiene la fecha de inicio de la reserva del formulario enviado.',
-      'Obtiene la fecha de fin de la reserva del formulario enviado.',
-      'Crea una nueva instancia de reserva con los datos proporcionados.',
-      'Añade la nueva reserva a la sesión de la base de datos.',
-      'Reduce el número de habitaciones disponibles en el hotel.',
-      'Guarda los cambios en la base de datos.',
-      'Renderiza la plantilla reserva.html con la información de la reserva.',
-      'Define la rama alternativa del condicional para el caso en que no haya habitaciones disponibles.',
-      'Devuelve un mensaje indicando que no hay habitaciones disponibles.',
-      'Comprueba si el script se está ejecutando directamente (no importado como módulo).',
-      'Ejecuta la aplicación Flask.',
+      'Importa las clases y funciones necesarias del framework Flask.',
+      'Importa el objeto db (gestor de base de datos) y el modelo Producto desde el archivo modelos.py. Estos son esenciales para interactuar con la base de datos y gestionar los productos.',
+      'Crea una instancia de la clase Flask, que es la aplicación principal. El argumento __name__ permite que Flask sepa dónde se encuentra el archivo principal para localizar recursos y rutas.',
+      'Configura la URI de la base de datos para la aplicación. En este caso, usa SQLite y define el archivo productos.db como la base de datos para almacenar la información.',
+      'Inicializa la extensión SQLAlchemy con la aplicación Flask creada, vinculando la base de datos a esta aplicación.',
+      'Define una ruta para el punto de entrada principal de la aplicación (la raíz /). Cualquier solicitud GET a esta URL invocará la función listar_productos.',
+      'Declara una función que gestionará las solicitudes a la ruta /. El propósito de esta función es listar los productos almacenados en la base de datos.',
+      'Consulta la base de datos para obtener todos los registros de la tabla Producto y los almacena en la variable productos.',
+      'Renderiza la plantilla productos.html y pasa la lista de productos a la plantilla como una variable llamada productos.',
+      'Define una ruta para manejar solicitudes POST enviadas al endpoint /agregar_producto. Esta ruta permite agregar nuevos productos a la base de datos.',
+      'Declara una función que manejará las solicitudes POST para agregar un nuevo producto.',
+      'Declara una nueva variable llamada nuevo_producto y la asigna a una instancia del modelo Producto. Esto crea un nuevo objeto basado en la clase Producto, que representa un producto en la base de datos.',
+      'Asigna al atributo nombre del nuevo objeto el valor recibido del formulario HTML. Este valor se extrae del campo de formulario con el nombre nombre enviado en la solicitud POST.',
+      'Asigna al atributo precio del nuevo objeto el valor recibido del formulario HTML. Este valor se extrae del campo de formulario con el nombre precio enviado en la solicitud POST.',
+      'Asigna al atributo descripcion del nuevo objeto el valor recibido del formulario HTML. Usa el método get para intentar obtener el valor del campo descripcion enviado en la solicitud POST. Si no se proporciona una descripción, asigna una cadena vacía ("") como valor predeterminado.',
+      'Cierra la llamada al constructor del modelo Producto, indicando que se ha completado la creación del nuevo objeto.',
+      'Añade el objeto nuevo_producto a la sesión actual de la base de datos. Esto marca el objeto para que sea incluido en la base de datos en el próximo commit.',
+      'Confirma los cambios en la base de datos, guardando permanentemente el objeto nuevo_producto en la tabla Producto.',
+      'Redirige al usuario a la ruta raíz (/), lo que actualiza la lista de productos para incluir el nuevo producto recién agregado.',
+      'Verifica si el archivo actual está siendo ejecutado directamente. Si el archivo se importa como un módulo en otro programa, este bloque no se ejecutará. Este es un mecanismo común en Python para definir el punto de entrada de una aplicación.',
+      'Inicia el servidor web de Flask, poniendo la aplicación en funcionamiento. Por defecto, se ejecutará en http://127.0.0.1:5000',
     ];
     this.lines = [
-      'line1',
-      'line2',
-      'line3',
-      'line4',
-      'line5',
-      'line6',
-      'line7',
-      'line8',
-      'line9',
-      'line10',
-      'line11',
-      'line12',
-      'line13',
-      'line14',
-      'line15',
-      'line16',
-      'line17',
-      'line18',
-      'line19',
-      'line20',
-      'line21',
-      'line22',
-      'line23',
-      'line24',
-      'line25',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
     ]
     this.explain_line = '';
+  }
+
+  update_line_jump(line_to_jump: number): void {
+    const diference_between_lines = this.current_line - line_to_jump
+    let lines_less = this.top - (diference_between_lines * 24);
+    this.top = lines_less;
+    this.top_style = `${this.top}px`;
+    this.explain_txt = this.explain[line_to_jump - 1];
+  }
+
+  validate_next(): boolean {
+    if (this.show2) {
+      if (this.iter == 2) { return false; }
+      if (this.current_line === 7) {
+        const line_jump = 4
+        this.update_line_jump(line_jump)
+        this.current_line = line_jump;
+        this.iter += 1;
+        this.add_explain();
+        this.allow_back = false;
+        return true;
+      }
+    }
+    return false
   }
 
   add_explain(): void {
     this.explain_txt = this.explain[this.current_line - 1];
     this.explain_line = this.lines[this.current_line - 1];
+    const vars = this.load_variables()
+    if (vars) {
+      this.explain_line = this.getNewValueForLine(vars)
+    }
+  }
+
+  getNewValueForLine(vars: any): string {
+    if (!this.show2) {
+      return "";
+    }
+
+    switch (this.current_line) {
+      case 4:
+        return `books: ${JSON.stringify(vars, null, 2)}`;
+
+      case 5:
+        if (vars[this.iter]) {
+          return `book.title: ${vars[this.iter].title} - book.author: ${vars[this.iter].author}`;
+        }
+        return "";
+      default:
+        return "";
+    }
   }
 
   onStart = (): void => {
@@ -258,24 +316,51 @@ class Book(db.Model):
     this.top_style = `${this.top}px`;
     this.current_line++;
     this.add_explain();
+    const validated = this.validate_next()
+    if (!validated) {
+      this.add_explain();
+    }
+  }
+
+  private load_variables() {
+    if (this.show2) {
+      return [
+        {
+          "id": 1,
+          "title": "Cien años de soledad",
+          "author": "Gabriel García Márquez"
+        },
+        {
+          "id": 2,
+          "title": "1984",
+          "author": "George Orwell"
+        },
+        {
+          "id": 3,
+          "title": "El principito",
+          "author": "Antoine de Saint-Exupéry"
+        }
+      ]
+    }
+    return null;
   }
 
   showView = (status: number): void => {
 
-    switch(status){
-      case 1:{
+    switch (status) {
+      case 1: {
         this.show1 = false
         this.show2 = true
         this.reset_vars_code2()
         break
       }
-      case 2:{
+      case 2: {
         this.show2 = false
         this.show3 = true
         this.reset_vars_code3()
         break
       }
-      case 3:{
+      case 3: {
         this.show3 = false
         this.show4 = true
         this.reset_vars_code4()
@@ -284,7 +369,7 @@ class Book(db.Model):
     }
   }
 
-  textBackModule:string = ''
+  textBackModule: string = ''
   uriBack: string = '/introduccion_patron_diseno_mvc/main'
 
   constructor(
