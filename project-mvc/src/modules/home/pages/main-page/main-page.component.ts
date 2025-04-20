@@ -33,21 +33,21 @@ export class MainPageComponent implements OnInit{
       routerLink: '/databases/main'
     },
     {
-      imgSrc: './assets/modelo/modelo.jpg',
+      imgSrc: './assets/modelo/MODULO 4_3.jpg',
       imgAlt: 'main.png',
       title: '4. Creando el Modelo en MVC',
       description: 'Este módulo es una exploración profunda del Modelo, la pieza fundamental que se encarga de organizar y gestionar los datos de nuestra aplicación. Desde la manipulación de la información hasta la comunicación con la base de datos, aprenderemos cómo el Modelo desempeña un papel clave en la construcción de aplicaciones robustas y eficientes.',
       routerLink: '/creando-modelo-mvc/main'
     },
     {
-      imgSrc: './assets/vista/vista.png',
+      imgSrc: './assets/vista/vista.jpg',
       imgAlt: 'main.png',
       title: '5. Desarrollo de la Vista en MVC',
       description: 'Este módulo es una exploración profunda de la Vista, la cara visible de nuestra aplicación. Aprenderemos a diseñar y desarrollar interfaces de usuario que no solo sean atractivas, sino que también se integren sin problemas con la lógica de negocio del Modelo y las interacciones del Controlador.',
       routerLink: '/introduccionMVC/main'
     },
     {
-      imgSrc: './assets/controlador/controlador.png',
+      imgSrc: './assets/controlador/controlador.jpg',
       imgAlt: 'main.png',
       title: '6. Implementando el Controlador en MVC',
       description: 'Este módulo es una inmersión profunda en el papel esencial del Controlador. Aprenderemos cómo diseñar y desarrollar controladores efectivos que respondan a las acciones del usuario, coordinando la comunicación entre la interfaz de usuario y la lógica de negocio subyacente.',
