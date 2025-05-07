@@ -67,6 +67,18 @@ export const AppRoutes: Routes = [
     ],
   },
   {
+    path: '',
+    children: [
+      {
+        path: 'desarrollo-vista-mvc',
+        loadChildren: () =>
+          import('../modules/module5/module5.module').then(
+            (m) => m.Module5Module
+          ),
+      },
+    ],
+  },
+  {
     path: '**',
     redirectTo: 'home/main',
   },
